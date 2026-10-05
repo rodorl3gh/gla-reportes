@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GLA - 01 Reporte de Veni Vidi Lex — Septiembre 2026</title>
+<meta name="description" content="Reporte mensual de funcionamiento, estabilidad y seguridad del sistema de Veni Vidi Lex correspondiente a septiembre de 2026." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --brand-primary:#001f3f;
+    --brand-primary-dark:#00152b;
+    --brand-primary-soft:rgba(0,31,63,.07);
+    --brand-accent:#c6a15b;
+    --brand-accent-dark:#b8934e;
+    --brand-blue:#3e6d9c;
+    --brand-soft:#e3f6f5;
+    --bg:#f5f7f9;
+    --surface:#ffffff;
+    --border:#e4e8ee;
+    --text:#14233a;
+    --text-muted:#5b6b80;
+    --ok:#1e7e34; --ok-bg:#e6f4ea;
+    --warn:#a15c00; --warn-bg:#fff4e5;
+    --bad:#b3261e; --bad-bg:#fdecea;
+    --font-display:"Playfair Display",Georgia,serif;
+    --font-body:"Inter",system-ui,-apple-system,sans-serif;
+    --shadow:0 10px 30px rgba(0,31,63,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{overflow-x:hidden;max-width:100%}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-wrap:break-word}
+  img,video{max-width:100%;height:auto;display:block}
+  h1,h2,h3,h4{font-family:var(--font-display);line-height:1.18;color:var(--brand-primary);overflow-wrap:break-word}
+  a{color:var(--brand-blue);text-decoration:none}
+  p{margin-bottom:.9rem}
+  strong{color:var(--brand-primary)}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,44px)}
+
+  /* Progress */
+  .progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand-accent),var(--brand-blue));z-index:100;transition:width .1s linear}
+
+  /* Cover */
+  .cover{position:relative;background:linear-gradient(160deg,var(--brand-primary) 0%,var(--brand-primary-dark) 55%,#001e3d 100%);color:#fff;padding:clamp(48px,10vw,96px) 0;overflow:hidden}
+  .cover::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 12% 18%,rgba(198,161,91,.22),transparent 42%),radial-gradient(circle at 88% 82%,rgba(95,176,201,.22),transparent 45%);pointer-events:none}
+  .cover::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:44px 44px;pointer-events:none}
+  .cover .wrap{position:relative;z-index:2}
+  .brandline{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;margin-bottom:clamp(28px,6vw,52px)}
+  .logo-mark{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:14px;background:var(--brand-accent);color:#241a06;font-family:var(--font-display);font-weight:800;font-size:1.35rem;letter-spacing:.5px;box-shadow:0 8px 22px rgba(0,0,0,.28)}
+  .brandline b{font-size:1.05rem;letter-spacing:.5px;font-weight:600}
+  .brandline span{color:rgba(255,255,255,.65);font-size:.85rem}
+  .kicker{display:inline-block;font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--brand-accent);font-weight:600;margin-bottom:1rem}
+  .cover h1{color:#fff;font-size:clamp(2rem,6vw,3.6rem);font-weight:800;max-width:16ch}
+  .cover h1 em{font-style:normal;color:var(--brand-accent)}
+  .cover .sub{color:rgba(255,255,255,.82);font-size:clamp(1rem,2.4vw,1.2rem);max-width:60ch;margin-top:1rem}
+  .cover-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(190px,100%),1fr));gap:1.1rem;margin-top:clamp(28px,6vw,52px);border-top:1px solid rgba(255,255,255,.14);padding-top:1.6rem}
+  .cover-meta div span{display:block;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:.25rem}
+  .cover-meta div b{font-size:1rem;color:#fff;font-weight:600}
+
+  /* Layout */
+  .layout{display:grid;grid-template-columns:270px minmax(0,1fr);gap:clamp(20px,4vw,52px);max-width:1180px;margin:0 auto;padding:clamp(28px,5vw,56px) clamp(16px,4vw,44px)}
+  main{min-width:0}
+  .section{padding:clamp(26px,5vw,52px) 0;border-top:1px solid var(--border);scroll-margin-top:24px}
+  .section:first-child{border-top:none;padding-top:0}
+  .sec-head{display:flex;align-items:baseline;gap:1rem;margin-bottom:1.4rem}
+  .num{font-family:var(--font-display);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;color:var(--brand-accent);line-height:1;flex:0 0 auto}
+  .sec-head h2{font-size:clamp(1.35rem,3.4vw,2rem);font-weight:700}
+  .lead{font-size:1.06rem;color:var(--text-muted);max-width:70ch}
+
+  /* TOC */
+  .toc{position:sticky;top:18px;align-self:start;max-height:calc(100vh - 36px);overflow:auto}
+  .toc h3{font-family:var(--font-body);font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.9rem;font-weight:600}
+  .toc ol{list-style:none;counter-reset:toc}
+  .toc li{counter-increment:toc;margin:0}
+  .toc a{display:flex;gap:.55rem;align-items:baseline;padding:.42rem .6rem;border-radius:9px;color:var(--text-muted);font-size:.9rem;border-left:3px solid transparent;transition:all .18s ease}
+  .toc a::before{content:counter(toc,decimal-leading-zero);font-family:var(--font-display);font-weight:700;color:var(--brand-accent);font-size:.8rem;min-width:1.6em}
+  .toc a:hover{background:var(--brand-primary-soft);color:var(--brand-primary)}
+  .toc a.active{background:var(--brand-primary-soft);color:var(--brand-primary);border-left-color:var(--brand-accent);font-weight:600}
+  .toc-toggle{display:none}
+
+  /* Cards / grids */
+  .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr))}
+  .kpi{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.3rem 1.35rem;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .kpi::after{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--brand-accent)}
+  .kpi .val{font-family:var(--font-display);font-size:clamp(1.9rem,5vw,2.6rem);font-weight:800;color:var(--brand-primary);line-height:1}
+  .kpi .lbl{font-size:.86rem;color:var(--text-muted);margin-top:.5rem;font-weight:500}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.35rem 1.4rem;box-shadow:var(--shadow)}
+  .card h4{font-size:1.02rem;margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem}
+  .card p{font-size:.92rem;color:var(--text-muted);margin-bottom:.4rem}
+  .card ul{list-style:none;margin-top:.3rem}
+  .card li{font-size:.9rem;color:var(--text-muted);padding:.28rem 0 .28rem 1.35rem;position:relative}
+  .card li::before{content:"";position:absolute;left:.15rem;top:.72rem;width:6px;height:6px;border-radius:50%;background:var(--brand-accent)}
+
+  /* Table */
+  .table-scroll{overflow-x:auto;border:1px solid var(--border);border-radius:14px;background:var(--surface);box-shadow:var(--shadow)}
+  table{width:100%;border-collapse:collapse;min-width:520px}
+  th,td{text-align:left;padding:.8rem 1rem;font-size:.9rem;border-bottom:1px solid var(--border)}
+  th{background:var(--brand-primary);color:#fff;font-weight:600;font-size:.8rem;letter-spacing:.04em;text-transform:uppercase}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr:nth-child(even){background:#fafbfc}
+  td code{background:var(--brand-soft);color:var(--brand-primary);padding:.1rem .4rem;border-radius:6px;font-size:.85em}
+
+  /* Badges */
+  .badge{display:inline-flex;align-items:center;gap:.35rem;padding:.2rem .6rem;border-radius:999px;font-size:.76rem;font-weight:600;white-space:nowrap}
+  .badge.ok{background:var(--ok-bg);color:var(--ok)}
+  .badge.warn{background:var(--warn-bg);color:var(--warn)}
+  .badge.bad{background:var(--bad-bg);color:var(--bad)}
+  .dot{width:8px;height:8px;border-radius:50%;background:currentColor;display:inline-block}
+
+  /* Semáforo rows */
+  .semaforo{display:flex;flex-direction:column;gap:.5rem}
+  .semaforo .row{display:flex;align-items:center;justify-content:space-between;gap:1rem;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:.85rem 1.1rem}
+  .semaforo .row b{font-size:.95rem;font-weight:600;color:var(--text)}
+  .semaforo .row small{display:block;color:var(--text-muted);font-size:.8rem;font-weight:400}
+
+  /* Timeline */
+  .timeline{position:relative;padding-left:1.7rem;margin-top:.5rem}
+  .timeline::before{content:"";position:absolute;left:.42rem;top:.4rem;bottom:.4rem;width:2px;background:linear-gradient(180deg,var(--brand-accent),var(--brand-blue))}
+  .tl-item{position:relative;padding:0 0 1.35rem .6rem}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-item::before{content:"";position:absolute;left:-1.62rem;top:.45rem;width:12px;height:12px;border-radius:50%;background:var(--surface);border:3px solid var(--brand-accent)}
+  .tl-item .when{font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--brand-blue);font-weight:600}
+  .tl-item h4{font-size:1rem;margin:.15rem 0 .35rem}
+  .tl-item p{font-size:.9rem;color:var(--text-muted);margin:0}
+
+  /* Highlight */
+  .highlight{background:linear-gradient(140deg,var(--brand-primary),#0a2f55);color:#fff;border-radius:18px;padding:clamp(1.4rem,4vw,2.2rem);box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .highlight::before{content:"";position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;background:rgba(198,161,91,.18)}
+  .highlight h3{color:#fff;font-size:clamp(1.15rem,3vw,1.5rem);margin-bottom:.6rem;position:relative}
+  .highlight p{color:rgba(255,255,255,.85);margin:0;position:relative;font-size:.98rem}
+  .highlight .accent{color:var(--brand-accent);font-weight:700}
+
+  /* checklist */
+  .check li{list-style:none;position:relative;padding:.4rem 0 .4rem 1.7rem;font-size:.92rem;color:var(--text-muted)}
+  .check li::before{content:"";position:absolute;left:0;top:.55rem;width:15px;height:15px;border-radius:5px;background:var(--ok-bg);border:1.5px solid var(--ok)}
+  .check li::after{content:"";position:absolute;left:5px;top:.78rem;width:4px;height:7px;border:solid var(--ok);border-width:0 2px 2px 0;transform:rotate(45deg)}
+
+  /* Steps */
+  .steps{counter-reset:st;display:grid;gap:12px}
+  .step{display:flex;gap:1rem;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1rem 1.2rem;box-shadow:var(--shadow)}
+  .step .n{counter-increment:st;flex:0 0 auto;width:34px;height:34px;border-radius:10px;background:var(--brand-accent);color:#241a06;display:flex;align-items:center;justify-content:center;font-weight:700;font-family:var(--font-display)}
+  .step .n::before{content:counter(st,decimal-leading-zero)}
+  .step b{display:block;font-size:.96rem;color:var(--brand-primary)}
+  .step p{font-size:.88rem;color:var(--text-muted);margin:0}
+
+  /* Footer */
+  .footer{background:var(--brand-primary);color:#fff;padding:clamp(40px,7vw,72px) 0;margin-top:20px}
+  .footer .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:2rem}
+  .footer h3{color:#fff;font-size:1.3rem;margin-bottom:.5rem}
+  .footer p,.footer a{color:rgba(255,255,255,.78);font-size:.92rem}
+  .footer .contact b{color:#fff;display:block;font-size:.95rem;margin-bottom:.2rem}
+  .footer .sig{border-top:1px solid rgba(255,255,255,.14);margin-top:2rem;padding-top:1.4rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.82rem;color:rgba(255,255,255,.6)}
+  .note{font-size:.8rem;color:var(--text-muted);margin-top:1rem}
+
+  .to-top{position:fixed;right:1.2rem;bottom:1.2rem;width:46px;height:46px;border-radius:50%;border:none;background:var(--brand-primary);color:#fff;font-size:1.2rem;cursor:pointer;box-shadow:0 10px 24px rgba(0,31,63,.3);opacity:0;pointer-events:none;transition:opacity .25s ease}
+  .to-top.show{opacity:1;pointer-events:auto}
+
+  @media (max-width:900px){
+    .layout{display:block}
+    .toc{position:static;max-height:none;margin-bottom:1.6rem;border:1px solid var(--border);border-radius:14px;background:var(--surface);box-shadow:var(--shadow);overflow:hidden}
+    .toc h3{margin:0;padding:1rem 1.2rem;display:flex;justify-content:space-between;align-items:center;cursor:pointer;color:var(--brand-primary)}
+    .toc h3 .chev{transition:transform .2s ease;color:var(--brand-accent)}
+    .toc.open h3 .chev{transform:rotate(180deg)}
+    .toc ol{display:none;padding:.4rem .6rem 1rem}
+    .toc.open ol{display:block}
+    .toc-toggle{display:block}
+  }
+
+  @media print{
+    .toc,.to-top,.progress{display:none!important}
+    .layout{display:block;max-width:none;padding:0}
+    body{background:#fff}
+    .section{page-break-inside:avoid}
+    .cover{page-break-after:always}
+    .kpi,.card,.table-scroll,.step,.highlight{box-shadow:none}
+    .footer{background:#fff;color:var(--brand-primary)}
+    .footer p,.footer a{color:#333}
+    .footer h3{color:var(--brand-primary)}
+  }
+</style>
+</head>
+<body>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<!-- PORTADA -->
+<header class="cover" id="portada">
+  <div class="wrap">
+    <div class="brandline">
+      <span class="logo-mark">VVL</span>
+      <div>
+        <b>Veni Vidi Lex</b>
+        <span>VVL Corporativo Jurídico</span>
+      </div>
+    </div>
+    <span class="kicker">Reporte mensual de funcionamiento</span>
+    <h1>Estabilidad y avance de su <em>sistema digital</em></h1>
+    <p class="sub">Resumen del funcionamiento, la seguridad y las mejoras realizadas en su página web y en el panel del despacho durante septiembre de 2026.</p>
+    <div class="cover-meta">
+      <div><span>Cliente</span><b>Veni Vidi Lex</b></div>
+      <div><span>Periodo</span><b>Septiembre 2026</b></div>
+      <div><span>Reporte</span><b>No. 01</b></div>
+      <div><span>Preparado por</span><b>GLA — GrowLink Agency</b></div>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <!-- ÍNDICE -->
+  <nav class="toc" id="toc" aria-label="Índice del reporte">
+    <h3 id="tocToggle">Índice del reporte <span class="chev">▾</span></h3>
+    <ol>
+      <li><a href="#resumen">Resumen ejecutivo</a></li>
+      <li><a href="#ficha">Ficha del proyecto</a></li>
+      <li><a href="#estado">Estado y disponibilidad</a></li>
+      <li><a href="#actividad">Actividad del mes</a></li>
+      <li><a href="#web">Sitio web público</a></li>
+      <li><a href="#panel">Panel del despacho</a></li>
+      <li><a href="#correo">Correo corporativo</a></li>
+      <li><a href="#dominio">Dominio y seguridad</a></li>
+      <li><a href="#datos">Datos del despacho</a></li>
+      <li><a href="#hallazgos">Hallazgos y recomendaciones</a></li>
+      <li><a href="#proximos">Próximos pasos</a></li>
+      <li><a href="#cierre">Cierre y contacto</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <!-- 01 RESUMEN -->
+    <section class="section" id="resumen">
+      <div class="sec-head"><span class="num">01</span><h2>Resumen ejecutivo</h2></div>
+      <p class="lead">El sistema de Veni Vidi Lex cerró septiembre <strong>operando de forma estable y sin interrupciones</strong>. Durante el mes se publicaron <strong>36 mejoras y actualizaciones</strong>, todas aplicadas sin errores, fortaleciendo tanto la imagen pública del despacho como las herramientas internas de trabajo.</p>
+
+      <div class="grid" style="margin:1.6rem 0">
+        <div class="kpi"><div class="val">36</div><div class="lbl">Mejoras y actualizaciones publicadas</div></div>
+        <div class="kpi"><div class="val">100%</div><div class="lbl">Disponibilidad del sitio, panel y agenda</div></div>
+        <div class="kpi"><div class="val">31</div><div class="lbl">Clientes registrados en el sistema</div></div>
+        <div class="kpi"><div class="val">0</div><div class="lbl">Incidentes o fallas registradas</div></div>
+      </div>
+
+      <div class="highlight" style="margin-bottom:1.4rem">
+        <h3>En una frase</h3>
+        <p>Su página web y su panel de trabajo funcionan de manera continua y segura, el equipo ya cuenta con <span class="accent">correos corporativos</span> activos y con acceso al sistema, y el dominio del despacho está protegido con certificado de seguridad y renovación automática.</p>
+      </div>
+
+      <div class="semaforo">
+        <div class="row"><b>Sitio web público <small>Landing, servicios, equipo y agenda en línea</small></b><span class="badge ok"><span class="dot"></span>Óptimo</span></div>
+        <div class="row"><b>Panel del despacho <small>Clientes, agenda, tareas, usuarios y documentos</small></b><span class="badge ok"><span class="dot"></span>Óptimo</span></div>
+        <div class="row"><b>Correo corporativo <small>Buzones del equipo y protección anti-suplantación</small></b><span class="badge ok"><span class="dot"></span>Óptimo</span></div>
+        <div class="row"><b>Dominio y certificado de seguridad <small>HTTPS activo y renovación automática</small></b><span class="badge ok"><span class="dot"></span>Óptimo</span></div>
+        <div class="row"><b>Seguridad preventiva <small>Refuerzos recomendados, sin urgencia</small></b><span class="badge warn"><span class="dot"></span>Con observaciones</span></div>
+      </div>
+    </section>
+
+    <!-- 02 FICHA -->
+    <section class="section" id="ficha">
+      <div class="sec-head"><span class="num">02</span><h2>Ficha del proyecto</h2></div>
+      <p class="lead">Datos generales del sistema que administramos para el despacho.</p>
+      <div class="table-scroll" style="margin-top:1.2rem">
+        <table>
+          <tbody>
+            <tr><th style="width:34%">Cliente</th><td>Veni Vidi Lex — VVL Corporativo Jurídico</td></tr>
+            <tr><th>Proyecto</th><td>Página web institucional + Panel de gestión del despacho</td></tr>
+            <tr><th>Dirección web</th><td><code>vvljuridico.com</code> · con versión segura <code>https</code> y <code>www</code></td></tr>
+            <tr><th>Correo del equipo</th><td>Zoho Mail — buzones <code>@vvljuridico.com</code></td></tr>
+            <tr><th>Dominio y protección</th><td>Gestión en Cloudflare (certificado de seguridad activo)</td></tr>
+            <tr><th>Infraestructura</th><td>Servidor administrado y monitoreado (Easy Panel)</td></tr>
+            <tr><th>Tecnología</th><td>Sitio web moderno, adaptado a celular, tablet y computadora</td></tr>
+            <tr><th>Última actualización</th><td>25 de septiembre de 2026</td></tr>
+            <tr><th>Estado general</th><td><span class="badge ok"><span class="dot"></span>Activo y estable</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 03 ESTADO -->
+    <section class="section" id="estado">
+      <div class="sec-head"><span class="num">03</span><h2>Estado y disponibilidad</h2></div>
+      <p class="lead">Realizamos verificaciones de acceso y tiempos de respuesta a los componentes principales. Todos respondieron correctamente.</p>
+      <div class="table-scroll" style="margin-top:1.2rem">
+        <table>
+          <thead><tr><th>Componente</th><th>Resultado</th><th>Tiempo de respuesta</th><th>Estado</th></tr></thead>
+          <tbody>
+            <tr><td>Página principal</td><td>Responde correctamente</td><td>Casi instantáneo</td><td><span class="badge ok"><span class="dot"></span>Disponible</span></td></tr>
+            <tr><td>Panel del despacho</td><td>Acceso protegido con usuario y contraseña</td><td>Menos de 0.3 s</td><td><span class="badge ok"><span class="dot"></span>Disponible</span></td></tr>
+            <tr><td>Agenda en línea</td><td>Responde correctamente</td><td>Menos de 0.6 s</td><td><span class="badge ok"><span class="dot"></span>Disponible</span></td></tr>
+            <tr><td>Certificado de seguridad (HTTPS)</td><td>Vigente y renovación automática</td><td>—</td><td><span class="badge ok"><span class="dot"></span>Válido</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Durante septiembre se realizaron 36 publicaciones de cambios (actualizaciones del sistema) y <strong>ninguna</strong> presentó errores: todas quedaron aplicadas y verificadas.</p>
+    </section>
+
+    <!-- 04 ACTIVIDAD -->
+    <section class="section" id="actividad">
+      <div class="sec-head"><span class="num">04</span><h2>Actividad del mes</h2></div>
+      <p class="lead">Esto es todo lo que se trabajó y quedó publicado durante septiembre, ordenado por semanas.</p>
+      <div class="timeline" style="margin-top:1.4rem">
+        <div class="tl-item">
+          <span class="when">Semana 1 · 1 al 2 de septiembre</span>
+          <h4>Herramientas de gestión de clientes</h4>
+          <p>Se agregó la sección de <strong>asuntos pendientes por cliente</strong> (con carga inicial desde Excel) y la opción de <strong>generar contratos y propuestas de servicios en PDF</strong> directamente desde la ficha del cliente, además de un editor visual para la plantilla del contrato.</p>
+        </div>
+        <div class="tl-item">
+          <span class="when">Semana 2 · 7 al 9 de septiembre</span>
+          <h4>Identidad y equipo del despacho</h4>
+          <p>Se creó la sección <strong>Equipo Legal</strong> (visible en la web y administrable desde el panel), se sumó el servicio de <strong>Compliance</strong> y se renovó la imagen del encabezado a <strong>VVL Corporativo Jurídico</strong>, junto con la puesta en marcha del dominio <code>vvljuridico.com</code>.</p>
+        </div>
+        <div class="tl-item">
+          <span class="when">Semana 3 · 16 de septiembre</span>
+          <h4>Presencia en redes sociales</h4>
+          <p>Se integraron los accesos a <strong>Instagram y WhatsApp</strong> en la página, con botones siempre visibles y bien acomodados tanto en computadora como en celular.</p>
+        </div>
+        <div class="tl-item">
+          <span class="when">Semana 4 · 23 al 25 de septiembre</span>
+          <h4>Actualización mayor del sistema interno</h4>
+          <p>Se publicó una versión reforzada con <strong>usuarios y roles</strong>, <strong>tareas del equipo</strong>, <strong>historial de actividad</strong>, <strong>recordatorios ligados a la agenda</strong> y una <strong>aplicación instalable</strong> en celular. También se añadió la sección <em>Nuestra Historia</em> en la web y la conexión de correo individual para cada usuario.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 WEB -->
+    <section class="section" id="web">
+      <div class="sec-head"><span class="num">05</span><h2>Sitio web público</h2></div>
+      <p class="lead">La página de su despacho se encuentra completa, activa y adaptada a todo tipo de dispositivo.</p>
+      <div class="grid" style="margin-top:1.2rem">
+        <div class="card">
+          <h4>Secciones activas</h4>
+          <ul>
+            <li>Inicio y presentación del despacho</li>
+            <li>Áreas de práctica</li>
+            <li>Servicios (incluye Compliance)</li>
+            <li>Equipo Legal</li>
+            <li>Nuestra Historia (galería)</li>
+            <li>Valores y casos</li>
+            <li>Contacto con dos sedes en mapa</li>
+            <li>Agenda de citas en línea</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>Experiencia del visitante</h4>
+          <ul>
+            <li>Diseño adaptado a celular, tablet y computadora</li>
+            <li>Botones de WhatsApp e Instagram siempre accesibles</li>
+            <li>Reserva de cita sin necesidad de llamar</li>
+            <li>Carga rápida de las secciones principales</li>
+            <li>Aplicación instalable en el teléfono</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>Resultado</h4>
+          <p>El sitio se mantiene <strong>en línea y sin fallas</strong>. Es la cara profesional del despacho frente a clientes nuevos y un canal directo de contacto.</p>
+          <p><span class="badge ok"><span class="dot"></span>Operando correctamente</span></p>
+        </div>
+      </div>
+      <p class="note">Nota: la sección de Testimonios se encuentra desactivada temporalmente a solicitud del despacho; puede reactivarse cuando lo indiquen.</p>
+    </section>
+
+    <!-- 06 PANEL -->
+    <section class="section" id="panel">
+      <div class="sec-head"><span class="num">06</span><h2>Panel del despacho</h2></div>
+      <p class="lead">Es la herramienta privada de trabajo del equipo, protegida con usuario y contraseña personal para cada abogado.</p>
+      <div class="grid" style="margin-top:1.2rem">
+        <div class="card"><h4>Organización del trabajo</h4><ul>
+          <li>Tablero principal con resumen</li>
+          <li>Agenda de citas y diligencias</li>
+          <li>Tareas del equipo y su cumplimiento</li>
+          <li>Recordatorios ligados al calendario</li>
+        </ul></div>
+        <div class="card"><h4>Clientes y servicios</h4><ul>
+          <li>Fichas de clientes con búsqueda y filtros</li>
+          <li>Asuntos pendientes por cliente</li>
+          <li>Áreas de práctica y catálogo de servicios</li>
+          <li>Exportación de información</li>
+        </ul></div>
+        <div class="card"><h4>Documentos</h4><ul>
+          <li>Generación de contratos en PDF</li>
+          <li>Propuestas de servicios desde la ficha</li>
+          <li>Plantilla de contrato editable</li>
+        </ul></div>
+        <div class="card"><h4>Control y seguridad</h4><ul>
+          <li>Usuarios con roles (administrador y abogados)</li>
+          <li>Historial de toda la actividad</li>
+          <li>Conexión de correo por usuario</li>
+          <li>Configuración personal de cada cuenta</li>
+        </ul></div>
+      </div>
+      <p class="note" style="margin-top:1rem"><span class="badge ok"><span class="dot"></span>Panel operando correctamente</span> &nbsp; El módulo de <strong>Expedientes digitales</strong> ya está disponible en el sistema y listo para comenzar a usarse cuando el despacho lo decida.</p>
+    </section>
+
+    <!-- 07 CORREO -->
+    <section class="section" id="correo">
+      <div class="sec-head"><span class="num">07</span><h2>Correo corporativo</h2></div>
+      <p class="lead">Se dejó funcionando el correo profesional del despacho con un buzón para cada abogado y protección contra suplantación.</p>
+      <div class="table-scroll" style="margin:1.2rem 0">
+        <table>
+          <thead><tr><th>Integrante</th><th>Buzón de correo</th><th>Estado</th></tr></thead>
+          <tbody>
+            <tr><td>Lic. Jonathan Jafet Pallares Hernández</td><td><code>jonathan.pallares@vvljuridico.com</code></td><td><span class="badge ok"><span class="dot"></span>Activo</span></td></tr>
+            <tr><td>Lic. Joel Cervantes Rodríguez</td><td><code>joel.cervantes@vvljuridico.com</code></td><td><span class="badge ok"><span class="dot"></span>Activo</span></td></tr>
+            <tr><td>Lic. Priscila López Arce</td><td><code>priscila.lopez@vvljuridico.com</code></td><td><span class="badge ok"><span class="dot"></span>Activo</span></td></tr>
+            <tr><td>Lic. Martha Beatriz Lizárraga Ruiz</td><td><code>martha.lizarraga@vvljuridico.com</code></td><td><span class="badge ok"><span class="dot"></span>Activo</span></td></tr>
+            <tr><td>Lic. Cecilia Fabiola López Aguilera</td><td><code>cecilia.lopez@vvljuridico.com</code></td><td><span class="badge ok"><span class="dot"></span>Activo</span></td></tr>
+            <tr><td>Administración (GLA)</td><td><code>rodolfo.ramirez@vvljuridico.com</code></td><td><span class="badge ok"><span class="dot"></span>Activo</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="grid">
+        <div class="card"><h4>Capacidad</h4><p>Plan de <strong>10 GB por buzón</strong>, ampliado a <strong>20 GB</strong> en los buzones principales. El uso actual es mínimo, por lo que hay amplio espacio disponible.</p></div>
+        <div class="card"><h4>Acceso</h4><p>Disponible desde el navegador y desde el teléfono, con <strong>filtro anti-spam</strong> activo y conexión segura con el sistema del despacho.</p></div>
+        <div class="card"><h4>Protección anti-suplantación</h4><p>El dominio cuenta con las protecciones de correo <strong>SPF, DKIM y DMARC</strong> ya configuradas, que evitan que terceros envíen correos haciéndose pasar por el despacho.</p></div>
+      </div>
+      <p class="note"><span class="badge ok"><span class="dot"></span>Correo del equipo activo y protegido</span></p>
+    </section>
+
+    <!-- 08 DOMINIO -->
+    <section class="section" id="dominio">
+      <div class="sec-head"><span class="num">08</span><h2>Dominio y seguridad</h2></div>
+      <p class="lead">El dominio <code>vvljuridico.com</code> está activo, con candado de seguridad y renovación automática gestionada para que no expire.</p>
+      <div class="grid" style="margin-top:1.2rem">
+        <div class="card"><h4>Certificado de seguridad</h4><p><strong>HTTPS activo.</strong> El candado de seguridad del sitio es válido, emitido por una autoridad reconocida y con <strong>renovación automática</strong>.</p></div>
+        <div class="card"><h4>Correo enlazado al dominio</h4><p>Los registros de correo del dominio apuntan correctamente a Zoho, garantizando la entrega y recepción confiable de mensajes.</p></div>
+        <div class="card"><h4>Protección del sitio</h4><p>Se verificó que la información interna del sistema <strong>no es accesible públicamente</strong> (archivos sensibles de configuración responden como no disponibles).</p></div>
+      </div>
+      <div class="highlight" style="margin-top:1.4rem">
+        <h3>Recomendaciones de refuerzo (sin urgencia)</h3>
+        <p>Para dejar la seguridad al máximo, sugerimos: forzar siempre la <span class="accent">conexión segura (HTTPS)</span>, elevar el nivel mínimo de cifrado, reforzar la política anti-suplantación a modo estricto y activar cabeceras de seguridad avanzadas. Todas son mejoras preventivas que podemos aplicar sin costo adicional.</p>
+      </div>
+    </section>
+
+    <!-- 09 DATOS -->
+    <section class="section" id="datos">
+      <div class="sec-head"><span class="num">09</span><h2>Datos del despacho</h2></div>
+      <p class="lead">Lo que ya vive dentro de su sistema al cierre de septiembre.</p>
+      <div class="grid" style="margin-top:1.2rem">
+        <div class="kpi"><div class="val">31</div><div class="lbl">Clientes registrados</div></div>
+        <div class="kpi"><div class="val">44</div><div class="lbl">Asuntos asociados a clientes</div></div>
+        <div class="kpi"><div class="val">12</div><div class="lbl">Áreas de práctica</div></div>
+        <div class="kpi"><div class="val">11</div><div class="lbl">Servicios en catálogo</div></div>
+        <div class="kpi"><div class="val">5</div><div class="lbl">Abogados en Equipo Legal</div></div>
+        <div class="kpi"><div class="val">6</div><div class="lbl">Usuarios con acceso y correo corporativo</div></div>
+      </div>
+      <div class="check" style="margin-top:1.4rem">
+        <ul>
+          <li>Cada licenciado del despacho cuenta con su <strong>usuario propio</strong> en el sistema.</li>
+          <li>Cada licenciado cuenta con su <strong>correo electrónico corporativo</strong> activo.</li>
+          <li>Los accesos quedan registrados en el <strong>historial de actividad</strong> para mayor control y transparencia.</li>
+          <li>La información está respaldada en el servidor administrado del sistema.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 10 HALLAZGOS -->
+    <section class="section" id="hallazgos">
+      <div class="sec-head"><span class="num">10</span><h2>Hallazgos y recomendaciones</h2></div>
+      <div class="semaforo" style="margin-top:1.2rem">
+        <div class="row"><b>Sitio, panel y agenda <small>Sin hallazgos. Operación estable y sin interrupciones.</small></b><span class="badge ok">Verde</span></div>
+        <div class="row"><b>Correo corporativo <small>Buzones activos y protegidos contra suplantación.</small></b><span class="badge ok">Verde</span></div>
+        <div class="row"><b>Dominio y certificado <small>HTTPS vigente, renovación automática y correo enlazado.</small></b><span class="badge ok">Verde</span></div>
+        <div class="row"><b>Seguridad preventiva <small>Se recomienda forzar HTTPS siempre, elevar el cifrado mínimo y reforzar DMARC.</small></b><span class="badge warn">Amarillo</span></div>
+        <div class="row"><b>Expedientes digitales <small>Módulo listo pero aún sin uso; oportunidad de aprovecharlo.</small></b><span class="badge warn">Amarillo</span></div>
+      </div>
+      <div class="grid" style="margin-top:1.4rem">
+        <div class="card"><h4>Fortalezas del mes</h4><ul>
+          <li>Cero errores en 36 publicaciones</li>
+          <li>Correo y accesos para todo el equipo</li>
+          <li>Dominio propio con imagen renovada</li>
+          <li>Sistema de roles, tareas e historial</li>
+        </ul></div>
+        <div class="card"><h4>Oportunidades de mejora</h4><ul>
+          <li>Aplicar los refuerzos de seguridad recomendados</li>
+          <li>Comenzar a usar el módulo de expedientes</li>
+          <li>Activar la agenda con citas reales</li>
+          <li>Reactivar la sección de Testimonios cuando lo deseen</li>
+        </ul></div>
+      </div>
+    </section>
+
+    <!-- 11 PROXIMOS -->
+    <section class="section" id="proximos">
+      <div class="sec-head"><span class="num">11</span><h2>Próximos pasos</h2></div>
+      <p class="lead">Plan sugerido para octubre, enfocado en aprovechar al máximo lo ya construido.</p>
+      <div class="steps" style="margin-top:1.2rem">
+        <div class="step"><div class="n"></div><div><b>Aplicar refuerzos de seguridad</b><p>Forzar HTTPS siempre, elevar el cifrado mínimo y reforzar la protección anti-suplantación del correo.</p></div></div>
+        <div class="step"><div class="n"></div><div><b>Poner en marcha los expedientes digitales</b><p>Migrar los asuntos principales al módulo de expedientes con documentos y seguimiento.</p></div></div>
+        <div class="step"><div class="n"></div><div><b>Capacitar al equipo en el panel</b><p>Sesión breve para que cada abogado saque provecho a agenda, tareas, clientes y documentos.</p></div></div>
+        <div class="step"><div class="n"></div><div><b>Medir resultados de la web</b><p>Activar el monitoreo de visitas y contactos para reportar el impacto real de la página.</p></div></div>
+      </div>
+    </section>
+
+    <!-- 12 CIERRE -->
+    <section class="section" id="cierre">
+      <div class="sec-head"><span class="num">12</span><h2>Cierre y contacto</h2></div>
+      <p class="lead">El sistema de Veni Vidi Lex terminó septiembre <strong>estable, seguro y con el equipo completamente habilitado</strong>. Agradecemos la confianza del despacho y quedamos a su disposición para cualquier duda o ajuste.</p>
+      <div class="highlight" style="margin-top:1.4rem">
+        <h3>Estamos para servirle</h3>
+        <p>Para dudas, nuevas solicitudes o soporte, contacte a GLA — GrowLink Agency. Con gusto le apoyamos.</p>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    <div>
+      <h3>GLA — GrowLink Agency</h3>
+      <p>Tecnología y soluciones digitales para despachos y negocios. Este reporte fue elaborado a partir del análisis real del funcionamiento del sistema durante el periodo indicado.</p>
+    </div>
+    <div class="contact">
+      <b>Contacto</b>
+      <p>WhatsApp / Teléfono: +52 411 115 8128</p>
+      <p>Proyecto: Veni Vidi Lex</p>
+      <p>Sitio: vvljuridico.com</p>
+    </div>
+    <div class="contact">
+      <b>Resumen del periodo</b>
+      <p>Septiembre 2026 · Reporte No. 01</p>
+      <p>36 mejoras publicadas · 0 incidentes</p>
+      <p>100% de disponibilidad</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="sig">
+      <span>GLA — GrowLink Agency · Reporte confidencial preparado para Veni Vidi Lex</span>
+      <span>Documento informativo · No incluye información de precios</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Volver arriba">↑</button>
+
+<script>
+  // Barra de progreso
+  var progress = document.getElementById('progress');
+  function onScroll(){
+    var h = document.documentElement;
+    var sc = h.scrollTop || document.body.scrollTop;
+    var max = h.scrollHeight - h.clientHeight;
+    progress.style.width = (max > 0 ? (sc / max) * 100 : 0) + '%';
+    document.getElementById('toTop').classList.toggle('show', sc > 400);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Volver arriba
+  document.getElementById('toTop').addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  // Índice móvil
+  var toc = document.getElementById('toc');
+  document.getElementById('tocToggle').addEventListener('click', function(){
+    toc.classList.toggle('open');
+  });
+  toc.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ toc.classList.remove('open'); });
+  });
+
+  // Resaltado de sección activa
+  var links = Array.prototype.slice.call(toc.querySelectorAll('a'));
+  var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  if ('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){
+          links.forEach(function(l){ l.classList.toggle('active', l.getAttribute('href') === '#'+e.target.id); });
+        }
+      });
+    }, {rootMargin:'-20% 0px -70% 0px', threshold:0});
+    sections.forEach(function(s){ obs.observe(s); });
+  }
+</script>
+</body>
+</html>
