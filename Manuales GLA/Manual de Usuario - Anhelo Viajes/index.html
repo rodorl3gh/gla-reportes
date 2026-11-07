@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Manual de Usuario - Anhelo Viajes</title>
+<style>
+:root {
+  --blue: #022664;
+  --blue-dark: #032763;
+  --blue-light: #EAF1F9;
+  --teal: #0393A9;
+  --cta: #FCCC13;
+  --white: #ffffff;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-500: #6b7280;
+  --gray-700: #374151;
+  --gray-900: #111827;
+  --success: #10B981;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--gray-700);background:var(--gray-50);line-height:1.7;font-size:15px}
+/* COVER */
+.cover{background:linear-gradient(135deg,var(--white) 0%,var(--blue-light) 40%,#d6e4f5 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:3rem 2rem;position:relative;overflow:hidden}
+.cover::before{content:'';position:absolute;top:-50%;right:-20%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(3,147,169,.10) 0%,transparent 70%)}
+.cover::after{content:'';position:absolute;bottom:-30%;left:-15%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(2,38,100,.08) 0%,transparent 70%)}
+.cover-content{position:relative;z-index:1;max-width:700px}
+.cover-logo{width:150px;height:150px;margin:0 auto 2rem;background:#fff;border-radius:28px;padding:1rem;box-shadow:0 10px 30px rgba(2,38,100,.12)}
+.cover-logo img{width:100%;height:100%;object-fit:contain}
+.cover h1{font-size:2.8rem;font-weight:800;color:var(--blue-dark);margin-bottom:.5rem;letter-spacing:-.02em}
+.cover h2{font-size:1.3rem;font-weight:500;color:var(--gray-500);margin-bottom:1.5rem}
+.cover .subtitle{font-size:1rem;color:var(--gray-500);margin-bottom:3rem}
+.cover-line{width:80px;height:4px;background:var(--teal);border-radius:2px;margin:0 auto 2rem}
+.cover-info{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;color:var(--gray-500);font-size:.85rem}
+.cover-info span{display:flex;align-items:center;gap:.4rem}
+/* PAGE */
+.page{max-width:960px;margin:0 auto;padding:2rem}
+/* TOC */
+.toc{background:var(--white);border-radius:16px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,.06);border:1px solid var(--gray-200);margin-bottom:3rem;page-break-before:always}
+.toc h2{font-size:1.5rem;font-weight:700;color:var(--blue-dark);margin-bottom:1.25rem}
+.toc ol{padding-left:1.5rem}
+.toc li{margin-bottom:.5rem;font-size:.95rem;color:var(--gray-700)}
+.toc li a{color:var(--blue);text-decoration:none;font-weight:500}
+.toc li a:hover{text-decoration:underline}
+/* SECTION */
+.section{background:var(--white);border-radius:16px;padding:2.5rem;box-shadow:0 1px 3px rgba(0,0,0,.06);border:1px solid var(--gray-200);margin-bottom:2.5rem;page-break-inside:avoid}
+.section-number{display:inline-block;width:40px;height:40px;border-radius:10px;background:var(--blue);color:var(--white);text-align:center;line-height:40px;font-weight:800;font-size:1.1rem;margin-bottom:1rem}
+.section h2{font-size:1.5rem;font-weight:700;color:var(--gray-900);margin-bottom:.75rem}
+.section h3{font-size:1rem;font-weight:600;color:var(--gray-900);margin:1.25rem 0 .5rem}
+.section p{color:var(--gray-500);margin-bottom:1rem;font-size:.95rem}
+.section ul,.section ol{padding-left:1.5rem;margin-bottom:1rem;color:var(--gray-500);font-size:.95rem}
+.section li{margin-bottom:.4rem}
+.section .tip{background:var(--blue-light);border-left:4px solid var(--teal);border-radius:0 8px 8px 0;padding:1rem 1.25rem;margin-bottom:1.25rem;font-size:.9rem;color:var(--blue-dark)}
+.section .tip strong{color:var(--blue-dark)}
+.section .tip-warn{background:#fef7e6;border-left:4px solid #d97706;border-radius:0 8px 8px 0;padding:1rem 1.25rem;margin-bottom:1.25rem;font-size:.9rem;color:#92400e}
+.section .tip-warn strong{color:#92400e}
+.section img{width:100%;border-radius:12px;border:1px solid var(--gray-200);margin-top:.5rem;box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.section .img-caption{text-align:center;font-size:.8rem;color:var(--gray-500);margin-top:.5rem;font-style:italic}
+/* STEPS */
+.steps{counter-reset:step;margin:1rem 0}
+.step{counter-increment:step;display:flex;gap:1rem;align-items:flex-start;margin-bottom:1rem}
+.step-num{width:32px;height:32px;border-radius:50%;background:var(--blue);color:var(--white);text-align:center;line-height:32px;font-weight:700;font-size:.85rem;flex-shrink:0}
+.step-content{flex:1}
+.step-content strong{color:var(--gray-900);display:block;margin-bottom:.15rem}
+.step-content span{color:var(--gray-500);font-size:.9rem}
+/* BUTTONS */
+.btn{border:1px solid var(--gray-200);border-radius:6px;padding:.25rem .6rem;font-size:.8rem;font-weight:600;background:var(--gray-50);color:var(--gray-700)}
+.btn-blue{background:var(--blue);color:#fff;border-color:var(--blue)}
+.btn-teal{background:var(--teal);color:#fff;border-color:var(--teal)}
+.btn-yellow{background:var(--cta);color:var(--blue);border-color:var(--cta)}
+.btn-red{background:#fef2f2;color:#dc2626;border-color:#fecaca}
+.btn-green{background:#ecfdf5;color:#059669;border-color:#a7f3d0}
+/* Print */
+@media print{
+  body{background:white}
+  .cover{min-height:auto;padding:4rem 2rem;page-break-after:always}
+  .section{box-shadow:none;border:1px solid #e5e7eb;page-break-inside:avoid}
+  .page{max-width:100%;padding:1.5rem}
+}
+@media(max-width:768px){
+  .cover h1{font-size:2rem}
+  .section{padding:1.5rem}
+}
+</style></head>
+<body>
+
+<!-- ====== PORTADA ====== -->
+<div class="cover">
+<div class="cover-content">
+<div class="cover-logo"><img src="img/logo.png" alt="Anhelo Viajes"></div>
+<h1>Anhelo Viajes</h1>
+<h2>Manual de Usuario</h2>
+<div class="cover-line"></div>
+<p class="subtitle">Gu&iacute;a completa para gestionar tu negocio de renta de camionetas y viajes</p>
+<div class="cover-info">
+<span>Anhelo Viajes</span><span>Celaya, Guanajuato</span><span>2026</span>
+</div>
+</div>
+</div>
+
+<div class="page">
+
+<!-- ====== INTRO ====== -->
+<div class="section">
+<h2>Bienvenido a Anhelo Viajes</h2>
+<p>Este manual te guiar&aacute; paso a paso en el uso de <strong>Anhelo Viajes</strong>, el sistema digital para tu negocio de renta de camionetas y transporte de grupos. Aqu&iacute; aprender&aacute;s a mostrar tus unidades, recibir cotizaciones, gestionar apartados y administrar tu informaci&oacute;n de forma sencilla.</p>
+<p>El sistema se divide en dos grandes partes:</p>
+<ul>
+<li><strong>La p&aacute;gina p&uacute;blica:</strong> lo que ven tus clientes cuando visitan tu sitio (camionetas, destinos, cotizador y reservas).</li>
+<li><strong>El panel de administraci&oacute;n:</strong> donde t&uacute; gestionas prospectos, apartados, camionetas, charters y configuraci&oacute;n.</li>
+</ul>
+<p><strong>No necesitas conocimientos t&eacute;cnicos.</strong> Todo est&aacute; dise&ntilde;ado para que puedas usarlo f&aacute;cilmente desde tu computadora o celular.</p>
+<div class="tip"><strong>Acceso r&aacute;pido:</strong> El sistema est&aacute; disponible en internet en cualquier momento. Solo necesitas tu usuario y contrase&ntilde;a.</div>
+</div>
+
+<!-- ====== TOC ====== -->
+<div class="toc">
+<h2>&Iacute;ndice</h2>
+<ol>
+<li><a href="#s1">La p&aacute;gina principal</a></li>
+<li><a href="#s2">Cotizar un viaje</a></li>
+<li><a href="#s3">Apartar tu lugar en un viaje charter</a></li>
+<li><a href="#s4">Apartar y pagar tu viaje</a></li>
+<li><a href="#s5">C&oacute;mo ingresar al panel de administraci&oacute;n</a></li>
+<li><a href="#s6">Panel principal (Dashboard)</a></li>
+<li><a href="#s7">Prospectos (solicitudes de clientes)</a></li>
+<li><a href="#s8">Apartados (reservas)</a></li>
+<li><a href="#s9">Camionetas (cat&aacute;logo de unidades)</a></li>
+<li><a href="#s10">Charters (pr&oacute;ximos viajes)</a></li>
+<li><a href="#s11">Datos de transferencia</a></li>
+<li><a href="#s12">Configuraci&oacute;n</a></li>
+<li><a href="#s13">Tu usuario de Anhelo Viajes</a></li>
+</ol>
+</div>
+
+<!-- ====== S1: LANDING ====== -->
+<div class="section" id="s1">
+<div class="section-number">1</div>
+<h2>La p&aacute;gina principal</h2>
+<p>Esta es la primera pantalla que ven tus clientes. Presenta tu negocio y los invita a cotizar un viaje.</p>
+
+<h3>Qu&eacute; encuentra el cliente aqu&iacute;:</h3>
+<ul>
+<li><strong>Portada (Hero):</strong> el mensaje principal &ldquo;Tu viaje comienza desde el camino&rdquo; con botones para <strong>Cotizar viaje</strong> y <strong>Ver camionetas</strong>.</li>
+<li><strong>Camionetas:</strong> las unidades disponibles con su capacidad y equipamiento.</li>
+<li><strong>Pr&oacute;ximos viajes (Charters):</strong> viajes programados con fechas y salidas.</li>
+<li><strong>Reserva tu lugar:</strong> apartar un asiento en un charter con solo el 20%.</li>
+<li><strong>Sobre Anhelo, garant&iacute;as, extras, destinos, testimonios y formas de pago:</strong> informaci&oacute;n que genera confianza.</li>
+<li><strong>Preguntas frecuentes:</strong> respuestas a las dudas m&aacute;s comunes.</li>
+</ul>
+
+<img src="img/01-home.png" alt="Pagina principal de Anhelo Viajes">
+<p class="img-caption">P&aacute;gina principal que ven los visitantes con todas sus secciones.</p>
+
+<div class="tip"><strong>Men&uacute; superior:</strong> Desde cualquier secci&oacute;n el cliente puede ir a <strong>Camionetas</strong>, <strong>Charters</strong> o hacer clic en <span class="btn btn-yellow">Cotizar</span> para empezar una cotizaci&oacute;n.</div>
+<div class="tip-warn"><strong>Bot&oacute;n de WhatsApp:</strong> En la esquina inferior derecha hay un bot&oacute;n flotante de WhatsApp. Cuando un cliente lo usa, el mensaje llega directamente a tu n&uacute;mero.</div>
+</div>
+
+<!-- ====== S2: COTIZAR ====== -->
+<div class="section" id="s2">
+<div class="section-number">2</div>
+<h2>Cotizar un viaje</h2>
+<p>El <strong>cotizador</strong> es un asistente que gu&iacute;a al cliente en 5 pasos sencillos. Al final muestra el precio real y permite apartar con el 20%.</p>
+
+<h3>Los 5 pasos del cotizador:</h3>
+<div class="steps">
+<div class="step"><div class="step-num">1</div><div class="step-content"><strong>Ruta</strong><span>El cliente elige un destino (de los populares o escribe el suyo) y su lugar de salida (ciudad y estado).</span></div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content"><strong>Fechas</strong><span>Selecciona la fecha de salida y de regreso. El sistema calcula autom&aacute;ticamente los d&iacute;as.</span></div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content"><strong>Pasajeros</strong><span>Elige el n&uacute;mero de pasajeros y el sistema recomienda la unidad ideal.</span></div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content"><strong>Contacto</strong><span>Escribe su nombre, tel&eacute;fono de WhatsApp (10 d&iacute;gitos) y correo para el recibo.</span></div></div>
+<div class="step"><div class="step-num">5</div><div class="step-content"><strong>Resumen</strong><span>Ve el desglose del precio (ruta base, d&iacute;as adicionales y total) y aparta con el 20%.</span></div></div>
+</div>
+
+<img src="img/02-cotizar.png" alt="Cotizador de viajes paso a paso">
+<p class="img-caption">Cotizador con el logo de Anhelo Viajes y los 5 pasos (Ruta, Fechas, Pasajeros, Contacto y Resumen).</p>
+
+<div class="tip"><strong>C&oacute;mo funciona el precio:</strong> El precio se calcula solo seg&uacute;n el destino, los d&iacute;as y la unidad elegida. El cliente no tiene que esperar a que le respondas: ve el precio al instante.</div>
+<div class="tip-warn"><strong>Destino nuevo:</strong> Si el cliente escribe un destino que no est&aacute; en la lista, el sistema guarda su solicitud para que lo contactes con el precio real.</div>
+</div>
+
+<!-- ====== S3: CHARTER ====== -->
+<div class="section" id="s3">
+<div class="section-number">3</div>
+<h2>Apartar tu lugar en un viaje charter</h2>
+<p>Los <strong>charters</strong> son viajes programados con salidas y precio por lugar. El cliente puede apartar su asiento directamente.</p>
+
+<h3>C&oacute;mo aparta un cliente su lugar:</h3>
+<div class="steps">
+<div class="step"><div class="step-num">1</div><div class="step-content"><strong>Entra al charter</strong><span>Desde la secci&oacute;n de &ldquo;Pr&oacute;ximos viajes&rdquo;, elige el charter de su inter&eacute;s.</span></div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content"><strong>Selecciona la fecha</strong><span>Elige la fecha de salida disponible.</span></div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content"><strong>Indica los lugares</strong><span>Con los botones <strong>+</strong> y <strong>&ndash;</strong> elige cu&aacute;ntos asientos apartar. El sistema muestra el precio por lugar y el total.</span></div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content"><strong>Confirma sus datos</strong><span>Nombre, tel&eacute;fono y correo. Luego aparta con el 20%.</span></div></div>
+</div>
+
+<div class="tip"><strong>Ventaja:</strong> Los charters se venden solos. El cliente aparta su lugar sin llamarte y t&uacute; solo revisas la reserva en el panel.</div>
+</div>
+
+<!-- ====== S4: APARTAR Y PAGAR ====== -->
+<div class="section" id="s4">
+<div class="section-number">4</div>
+<h2>Apartar y pagar tu viaje</h2>
+<p>Al terminar la cotizaci&oacute;n o el charter, el cliente confirma su apartado pagando <strong>solo el 20%</strong> de anticipo.</p>
+
+<h3>Formas de pago disponibles:</h3>
+<ul>
+<li><strong>Transferencia bancaria:</strong> el cliente ve tus datos bancarios y sube una captura de su transferencia. T&uacute; la verificas despu&eacute;s.</li>
+<li><strong>Tarjeta (Mercado Pago):</strong> el cliente paga en l&iacute;nea con tarjeta de cr&eacute;dito o d&eacute;bito. El pago se valida autom&aacute;ticamente.</li>
+</ul>
+
+<h3>Qu&eacute; incluye el viaje:</h3>
+<ul>
+<li>Gasolina, casetas, conductor, seguro y permisos.</li>
+<li>En charter: transporte de ida y vuelta, conductor, seguro y permisos.</li>
+</ul>
+
+<div class="tip"><strong>Anticipo del 20%:</strong> El saldo restante se liquida antes del viaje. El sistema calcula autom&aacute;ticamente el monto del anticipo y el saldo pendiente.</div>
+<div class="tip-warn"><strong>Verificaci&oacute;n de transferencia:</strong> Cuando un cliente paga por transferencia, su apartado queda en estado <strong>&ldquo;Pendiente de verificaci&oacute;n&rdquo;</strong> hasta que t&uacute; lo confirmes en el panel.</div>
+</div>
+
+<!-- ====== S5: LOGIN ====== -->
+<div class="section" id="s5">
+<div class="section-number">5</div>
+<h2>C&oacute;mo ingresar al panel de administraci&oacute;n</h2>
+<p>El panel de administraci&oacute;n es tu centro de control. Para entrar, sigue estos pasos:</p>
+
+<div class="steps">
+<div class="step"><div class="step-num">1</div><div class="step-content"><strong>Abre el panel</strong><span>Agrega <code>/admin</code> al final de la direcci&oacute;n de tu sitio, por ejemplo: <code>tusitio.com/admin</code>.</span></div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content"><strong>Escribe tus credenciales</strong><span>Ingresa tu usuario y contrase&ntilde;a de administrador.</span></div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content"><strong>Haz clic en &ldquo;Ingresar&rdquo;</strong><span>Ser&aacute;s redirigido al Panel Principal.</span></div></div>
+</div>
+
+<img src="img/03-login.png" alt="Pantalla de inicio de sesion">
+<p class="img-caption">Pantalla de inicio de sesi&oacute;n del panel de administraci&oacute;n.</p>
+
+<div class="tip-warn"><strong>Importante:</strong> No compartas tu contrase&ntilde;a con nadie. Si la olvidas, contacta al administrador del sistema.</div>
+</div>
+
+<!-- ====== S6: DASHBOARD ====== -->
+<div class="section" id="s6">
+<div class="section-number">6</div>
+<h2>Panel principal (Dashboard)</h2>
+<p>Al ingresar, ver&aacute;s el <strong>Dashboard</strong>: un resumen de toda la actividad de tu negocio.</p>
+
+<h3>Qu&eacute; informaci&oacute;n muestra:</h3>
+<ul>
+<li><strong>Total de prospectos:</strong> todas las solicitudes de cotizaci&oacute;n recibidas.</li>
+<li><strong>Nuevos:</strong> solicitudes que a&uacute;n no has atendido.</li>
+<li><strong>Reservados:</strong> viajes que ya se cerraron.</li>
+<li><strong>No cerrados:</strong> solicitudes que no se concretaron.</li>
+<li><strong>Tasa de conversi&oacute;n:</strong> porcentaje de prospectos que terminan reservando.</li>
+<li><strong>&Uacute;ltimos prospectos:</strong> las solicitudes m&aacute;s recientes con su estado.</li>
+</ul>
+
+<img src="img/04-dashboard.png" alt="Dashboard del panel de administracion">
+<p class="img-caption">Panel principal con estad&iacute;sticas y lista de &uacute;ltimos prospectos.</p>
+
+<div class="tip"><strong>Men&uacute; lateral:</strong> A la izquierda tienes el men&uacute; con todas las secciones: Prospectos, Apartados, Camionetas, Charters, Datos de transferencia y Configuraci&oacute;n.</div>
+</div>
+
+<!-- ====== S7: PROSPECTOS ====== -->
+<div class="section" id="s7">
+<div class="section-number">7</div>
+<h2>Prospectos (solicitudes de clientes)</h2>
+<p>Aqu&iacute; se guardan todas las cotizaciones y solicitudes que llegan desde la p&aacute;gina p&uacute;blica.</p>
+
+<h3>Qu&eacute; puedes hacer con un prospecto:</h3>
+<ul>
+<li><strong>Ver sus datos:</strong> nombre, tel&eacute;fono, origen, destino, fechas, pasajeros y unidad recomendada.</li>
+<li><strong>Cambiar el estado:</strong> Nuevo &rarr; Contactado &rarr; Cotizando &rarr; Reservado (o No cerrado).</li>
+<li><strong>Agregar notas:</strong> para registrar el avance de la negociaci&oacute;n.</li>
+<li><strong>Eliminar:</strong> quitar un prospecto que ya no necesitas.</li>
+</ul>
+
+<img src="img/05-prospectos.png" alt="Lista de prospectos">
+<p class="img-caption">Lista de prospectos con su estado y opciones de gesti&oacute;n.</p>
+
+<div class="tip"><strong>Seguimiento:</strong> Usa los estados para saber en qu&eacute; etapa est&aacute; cada cliente. As&iacute; no se te escapa ninguna oportunidad de venta.</div>
+</div>
+
+<!-- ====== S8: APARTADOS ====== -->
+<div class="section" id="s8">
+<div class="section-number">8</div>
+<h2>Apartados (reservas)</h2>
+<p>En esta secci&oacute;n se registran las reservas con anticipo pagado. Cada apartado tiene un <strong>folio &uacute;nico</strong> (ej: ANH-2026-0001).</p>
+
+<h3>Estados de un apartado:</h3>
+<ul>
+<li><span class="btn" style="background:#fef3c7;color:#d97706;border-color:#fde68a">Pendiente de verificaci&oacute;n</span> — el cliente subi&oacute; su comprobante y espera tu confirmaci&oacute;n.</li>
+<li><span class="btn btn-green">Confirmado</span> — el pago fue validado.</li>
+<li><span class="btn btn-red">Rechazado</span> — el pago no fue v&aacute;lido.</li>
+</ul>
+
+<h3>Qu&eacute; puedes hacer:</h3>
+<ul>
+<li><strong>Ver el comprobante:</strong> haz clic en el enlace para abrir la captura o PDF de la transferencia.</li>
+<li><strong>Confirmar o rechazar:</strong> cambia el estado seg&uacute;n la validaci&oacute;n del pago.</li>
+</ul>
+
+<img src="img/06-apartados.png" alt="Lista de apartados">
+<p class="img-caption">Lista de apartados con folio, monto y estado de verificaci&oacute;n.</p>
+
+<div class="tip-warn"><strong>Revisa siempre:</strong> Antes de confirmar un apartado por transferencia, verifica que el comprobante sea real y que el monto coincida con el 20% de anticipo.</div>
+</div>
+
+<!-- ====== S9: CAMIONETAS ====== -->
+<div class="section" id="s9">
+<div class="section-number">9</div>
+<h2>Camionetas (cat&aacute;logo de unidades)</h2>
+<p>Administra las unidades que ofreces en tu p&aacute;gina. Lo que agregues aqu&iacute; aparece en la secci&oacute;n &ldquo;Camionetas&rdquo; del sitio.</p>
+
+<h3>Campos de cada camioneta:</h3>
+<ul>
+<li><strong>Nombre:</strong> por ejemplo &ldquo;Camioneta 14 pasajeros&rdquo;.</li>
+<li><strong>Capacidad:</strong> n&uacute;mero de pasajeros (11, 14, 18, 20...).</li>
+<li><strong>Descripci&oacute;n:</strong> una frase que describa la unidad.</li>
+<li><strong>Equipamiento:</strong> aire acondicionado, pantalla, seguro, etc.</li>
+<li><strong>Foto:</strong> enlace a la imagen de la unidad.</li>
+<li><strong>Activa / orden:</strong> para mostrar u ocultar la unidad y ordenarla en la p&aacute;gina.</li>
+</ul>
+
+<img src="img/07-camionetas.png" alt="Catalogo de camionetas">
+<p class="img-caption">Cat&aacute;logo de camionetas con sus datos y opciones de edici&oacute;n.</p>
+
+<div class="tip"><strong>Consejo:</strong> Si una unidad sale de servicio, desact&iacute;vala (en vez de borrarla) para que no aparezca en la p&aacute;gina sin perder su informaci&oacute;n.</div>
+</div>
+
+<!-- ====== S10: CHARTERS ====== -->
+<div class="section" id="s10">
+<div class="section-number">10</div>
+<h2>Charters (pr&oacute;ximos viajes)</h2>
+<p>Aqu&iacute; creas y gestionas los viajes programados que se muestran en &ldquo;Pr&oacute;ximos viajes&rdquo; del sitio.</p>
+
+<h3>Campos de cada charter:</h3>
+<ul>
+<li><strong>Nombre:</strong> por ejemplo &ldquo;Charter a Ixtapa&rdquo;.</li>
+<li><strong>Destino:</strong> a d&oacute;nde va el viaje.</li>
+<li><strong>Descripci&oacute;n:</strong> detalles del viaje.</li>
+<li><strong>Fechas disponibles:</strong> ej. &ldquo;Salidas cada fin de semana&rdquo;.</li>
+<li><strong>Ciudades de salida:</strong> desde d&oacute;nde parten.</li>
+<li><strong>Precio por lugar:</strong> lo que cuesta cada asiento.</li>
+<li><strong>Activo / orden:</strong> para mostrarlo u ocultarlo en la p&aacute;gina.</li>
+</ul>
+
+<img src="img/08-charters.png" alt="Lista de charters">
+<p class="img-caption">Lista de viajes charter con sus fechas y precio por lugar.</p>
+
+<div class="tip"><strong>Precio por lugar:</strong> Si el precio es mayor a cero, el cliente puede apartar y pagar en l&iacute;nea. Si lo dejas en cero, el cliente env&iacute;a una solicitud y t&uacute; le cotizas despu&eacute;s.</div>
+</div>
+
+<!-- ====== S11: DATOS DE TRANSFERENCIA ====== -->
+<div class="section" id="s11">
+<div class="section-number">11</div>
+<h2>Datos de transferencia</h2>
+<p>Configura tu cuenta bancaria para que los clientes puedan pagar su apartado por transferencia.</p>
+
+<h3>Campos a completar:</h3>
+<ul>
+<li><strong>Titular de la cuenta:</strong> nombre completo del due&ntilde;o de la cuenta.</li>
+<li><strong>Banco:</strong> BBVA, Banorte, Santander, etc.</li>
+<li><strong>CLABE:</strong> 18 d&iacute;gitos de la cuenta.</li>
+<li><strong>N&uacute;mero de cuenta / tarjeta:</strong> opcional.</li>
+<li><strong>Instrucciones:</strong> indicaciones extra para el cliente (opcional).</li>
+<li><strong>Mostrar opci&oacute;n de transferencia:</strong> act&iacute;vala para que aparezca como forma de pago.</li>
+</ul>
+
+<img src="img/09-pagos.png" alt="Datos de transferencia bancaria">
+<p class="img-caption">Formulario de datos bancarios que se muestran al cliente al pagar por transferencia.</p>
+
+<div class="tip-warn"><strong>Verifica la CLABE:</strong> Escribe bien los 18 d&iacute;gitos. Si est&aacute; mal, los clientes no podr&aacute;n hacerte la transferencia.</div>
+</div>
+
+<!-- ====== S12: CONFIGURACION ====== -->
+<div class="section" id="s12">
+<div class="section-number">12</div>
+<h2>Configuraci&oacute;n</h2>
+<p>Aqu&iacute; editas la informaci&oacute;n de contacto y el contenido principal de tu p&aacute;gina.</p>
+
+<h3>Secciones de configuraci&oacute;n:</h3>
+<ul>
+<li><strong>Contacto:</strong> n&uacute;mero de WhatsApp, tel&eacute;fono de oficina, correo y direcci&oacute;n.</li>
+<li><strong>Redes sociales:</strong> enlaces de Facebook, Instagram, Twitter/X y YouTube.</li>
+<li><strong>Contenido del Hero:</strong> el t&iacute;tulo y subt&iacute;tulo que aparecen en la portada del sitio.</li>
+</ul>
+
+<div class="steps">
+<div class="step"><div class="step-num">1</div><div class="step-content"><strong>Edita los campos</strong><span>Modifica cualquier dato que necesites actualizar.</span></div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content"><strong>Haz clic en &ldquo;Guardar cambios&rdquo;</strong><span>El sistema confirmar&aacute; que se guard&oacute; correctamente.</span></div></div>
+</div>
+
+<img src="img/10-config.png" alt="Configuracion del sitio">
+<p class="img-caption">Panel de configuraci&oacute;n con contacto, redes sociales y contenido del hero.</p>
+
+<div class="tip"><strong>WhatsApp:</strong> El n&uacute;mero de WhatsApp que pongas aqu&iacute; es al que llegan los mensajes del bot&oacute;n flotante y de las solicitudes.</div>
+</div>
+
+<!-- ====== S13: USUARIO ANHELO VIAJES ====== -->
+<div class="section" id="s13">
+<div class="section-number">13</div>
+<h2>Tu usuario de Anhelo Viajes</h2>
+<p>Adem&aacute;s del panel de administraci&oacute;n, cuentas con un usuario propio de Anhelo Viajes para llenar los formularios internos del proyecto.</p>
+
+<h3>Para qu&eacute; sirve tu usuario:</h3>
+<ul>
+<li><strong>Levantamiento de informaci&oacute;n:</strong> un formulario para capturar la informaci&oacute;n de tu negocio (nombre, historia, diferenciadores, garant&iacute;as, redes sociales, etc.).</li>
+<li><strong>Datos del cotizador:</strong> un formulario para registrar los precios y datos que alimentan el cotizador autom&aacute;tico.</li>
+</ul>
+
+<h3>C&oacute;mo ingresar:</h3>
+<div class="steps">
+<div class="step"><div class="step-num">1</div><div class="step-content"><strong>Entra al formulario</strong><span>Usa el enlace que te proporcion&oacute; tu administrador (ej: <code>tusitio.com/levantamiento</code>).</span></div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content"><strong>Escribe tu usuario y contrase&ntilde;a</strong><span>Con las credenciales de Anhelo Viajes.</span></div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content"><strong>Completa la informaci&oacute;n</strong><span>Llena cada secci&oacute;n del formulario. Tus avances se guardan autom&aacute;ticamente.</span></div></div>
+</div>
+
+<img src="img/11-levantamiento.png" alt="Formulario de levantamiento de informacion">
+<p class="img-caption">Formulario de levantamiento de informaci&oacute;n de Anhelo Viajes.</p>
+
+<img src="img/12-datos.png" alt="Formulario de datos del cotizador">
+<p class="img-caption">Formulario de datos del cotizador autom&aacute;tico.</p>
+
+<div class="tip"><strong>Autoguardado:</strong> No necesitas guardar manualmente. Cada vez que escribes, la informaci&oacute;n se guarda sola. Puedes salir y continuar despu&eacute;s.</div>
+</div>
+
+<!-- ====== FOOTER ====== -->
+<div class="section" style="text-align:center;background:var(--blue-light);border-color:transparent">
+<p style="color:var(--blue-dark);margin:0;font-weight:600">Anhelo Viajes &mdash; Tu viaje comienza desde el camino</p>
+<p style="color:var(--gray-500);margin:.25rem 0 0;font-size:.85rem">Sistema desarrollado por GLA (GrowLink Agency)</p>
+</div>
+
+</div>
+</body>
+</html>

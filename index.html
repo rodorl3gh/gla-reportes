@@ -2,30 +2,587 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Reportes GLA — GrowLink Agency</title>
-<meta name="description" content="Reportes profesionales para clientes de GLA — GrowLink Agency." />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Directorio · Reportes y Manuales — GLA</title>
+<meta name="description" content="Directorio de reportes mensuales y manuales de usuario de los clientes y proyectos de GLA — GrowLink Agency." />
+<meta name="theme-color" content="#060608" />
+<link rel="icon" type="image/png" href="https://pub-3eeffe9475844ec988609674470d7176.r2.dev/brand/gla-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
-  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#060608; --card:#0d0f14; --card2:#111318; --line:#242833; --line2:#1a1d24;
+    --text:#e7e7ea; --text2:#a1a1aa; --text3:#71717a;
+    --purple:#8b5cf6; --blue:#3b82f6; --green:#10b981;
+    --ok-soft:rgba(16,185,129,.12); --ok-border:rgba(16,185,129,.32); --ok-text:#6ee7b7;
+    --radius:18px;
+  }
+  *{box-sizing:border-box}
   html,body{overflow-x:hidden;max-width:100%}
-  body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#0a1420;color:#eaf1f8;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem}
-  .card{width:100%;max-width:640px;background:#0f1f33;border:1px solid #1e3550;border-radius:20px;padding:clamp(1.5rem,5vw,2.6rem)}
-  h1{font-size:clamp(1.4rem,4vw,2rem);margin-bottom:.4rem}
-  p.sub{color:#9fb3c8;margin-bottom:1.6rem;font-size:.95rem}
-  a.item{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 1.1rem;border:1px solid #1e3550;border-radius:14px;text-decoration:none;color:#eaf1f8;background:#0b1a2b;transition:.2s}
-  a.item:hover{border-color:#c6a15b;background:#122740}
-  a.item b{font-size:1rem}
-  a.item span{color:#c6a15b;font-size:.85rem;white-space:nowrap}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--text);
+    font-family:Inter,system-ui,-apple-system,sans-serif;
+    line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;
+    padding:clamp(18px,3.5vw,40px) clamp(14px,4vw,48px) 54px;
+    background-image:
+      radial-gradient(760px 430px at 8% -12%, rgba(139,92,246,.16), transparent 62%),
+      radial-gradient(680px 420px at 100% -4%, rgba(59,130,246,.10), transparent 60%),
+      radial-gradient(560px 360px at 50% 118%, rgba(139,92,246,.07), transparent 65%);
+    background-repeat:no-repeat;
+  }
+  img{max-width:100%;height:auto;display:block}
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto}
+
+  /* ---------- top bar ---------- */
+  .topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+  .brand .mark{
+    width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex:none;
+    background:linear-gradient(150deg,rgba(139,92,246,.22),rgba(59,130,246,.12));
+    border:1px solid #2a2f3d;box-shadow:0 0 24px rgba(139,92,246,.18) inset;
+  }
+  .brand .mark img{width:24px;height:24px;object-fit:contain}
+  .brand .btxt b{display:block;font-family:"Space Grotesk",sans-serif;font-size:16px;letter-spacing:.02em}
+  .brand .btxt small{display:block;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--text3);margin-top:1px}
+  .tag{
+    font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--text3);border:1px solid var(--line);border-radius:999px;padding:7px 12px;white-space:nowrap;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{margin-top:clamp(30px,5vw,52px)}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#c4b5fd;
+    background:rgba(139,92,246,.10);border:1px solid rgba(139,92,246,.28);border-radius:999px;padding:6px 12px;
+  }
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--purple);box-shadow:0 0 10px rgba(139,92,246,.9)}
+  h1{
+    font-family:"Space Grotesk",sans-serif;font-size:clamp(30px,5.4vw,50px);line-height:1.03;
+    letter-spacing:-.035em;margin:18px 0 12px;max-width:20ch;
+  }
+  h1 em{font-style:normal;background:linear-gradient(100deg,#c4b5fd,#8b5cf6 45%,#60a5fa);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lead{margin:0;color:var(--text2);font-size:clamp(13.5px,1.6vw,15px);max-width:64ch;line-height:1.65}
+
+  /* ---------- KPIs ---------- */
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));gap:10px;margin:26px 0 8px}
+  .kpi{
+    background:linear-gradient(180deg,rgba(20,22,29,.72),rgba(11,13,18,.6));
+    border:1px solid var(--line);border-radius:14px;padding:14px 15px;
+  }
+  .kpi .k{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--text3)}
+  .kpi .v{font-family:"Space Grotesk",sans-serif;font-size:24px;font-weight:600;margin-top:6px;letter-spacing:-.02em;line-height:1.1}
+  .kpi .v small{font-size:10px;color:var(--text3);font-weight:400;letter-spacing:0}
+  .kpi .v.date{font-size:17px;padding-top:4px}
+
+  /* ---------- toolbar ---------- */
+  .toolbar{
+    margin-top:26px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between;
+    padding:12px;background:rgba(13,15,20,.66);border:1px solid var(--line);border-radius:16px;
+  }
+  .tabs{display:flex;gap:4px;padding:4px;background:#0a0c11;border:1px solid var(--line2);border-radius:12px;flex-wrap:wrap}
+  .tab{
+    appearance:none;border:0;background:transparent;color:var(--text2);cursor:pointer;
+    font-family:Inter,sans-serif;font-size:12.5px;font-weight:500;padding:9px 14px;border-radius:9px;
+    display:inline-flex;align-items:center;gap:8px;transition:background .18s,color .18s;
+  }
+  .tab:hover{color:var(--text)}
+  .tab.active{background:linear-gradient(180deg,#1b1e27,#141720);color:#fff;box-shadow:0 1px 0 rgba(255,255,255,.04) inset,0 6px 18px rgba(0,0,0,.35)}
+  .tab .cnt{
+    font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--text3);
+    background:rgba(255,255,255,.05);border:1px solid var(--line2);border-radius:999px;padding:1px 7px;line-height:1.6;
+  }
+  .tab.active .cnt{color:#ddd6fe;background:rgba(139,92,246,.18);border-color:rgba(139,92,246,.35)}
+  .search{
+    display:flex;align-items:center;gap:8px;flex:1;min-width:200px;max-width:360px;
+    background:#0a0c11;border:1px solid var(--line2);border-radius:12px;padding:0 12px;height:42px;
+  }
+  .search svg{flex:none;stroke:var(--text3)}
+  .search input{
+    flex:1;min-width:0;background:transparent;border:0;outline:0;color:var(--text);
+    font-family:Inter,sans-serif;font-size:13px;
+  }
+  .search input::placeholder{color:var(--text3)}
+  .search:focus-within{border-color:rgba(139,92,246,.55);box-shadow:0 0 0 3px rgba(139,92,246,.10)}
+
+  /* ---------- section head ---------- */
+  .section-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:30px 0 14px}
+  .section-head h2{
+    font-family:"Space Grotesk",sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;
+    text-transform:uppercase;color:#d4d4d8;display:flex;align-items:center;gap:10px;margin:0;
+  }
+  .section-head h2::before{content:"";width:7px;height:7px;border-radius:2px;background:var(--purple);box-shadow:0 0 12px rgba(139,92,246,.7)}
+  .section-head .rule{flex:1;height:1px;background:linear-gradient(90deg,rgba(139,92,246,.28),var(--line2) 45%,transparent)}
+  .section-head .count{font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--text3);letter-spacing:.04em}
+
+  /* ---------- chips ---------- */
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px}
+  .chip{
+    appearance:none;cursor:pointer;font-family:Inter,sans-serif;font-size:12px;font-weight:500;
+    color:var(--text2);background:rgba(255,255,255,.02);border:1px solid var(--line);
+    padding:7px 13px;border-radius:999px;transition:all .18s;display:inline-flex;align-items:center;gap:7px;
+  }
+  .chip:hover{color:var(--text);border-color:#343a49}
+  .chip.active{color:#fff;background:rgba(139,92,246,.14);border-color:rgba(139,92,246,.42)}
+  .chip .cdot{width:7px;height:7px;border-radius:50%;background:var(--accent,var(--purple))}
+
+  /* ---------- client cards ---------- */
+  .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr))}
+  .client-card{
+    --accent:#8b5cf6;--accent-soft:rgba(139,92,246,.14);
+    position:relative;background:linear-gradient(180deg,rgba(19,21,28,.78),rgba(11,13,18,.66));
+    border:1px solid var(--line);border-radius:var(--radius);padding:18px 18px 16px;
+    display:flex;flex-direction:column;gap:15px;transition:border-color .2s,transform .2s,box-shadow .2s;
+    overflow:hidden;
+  }
+  .client-card::before{
+    content:"";position:absolute;inset:0 0 auto 0;height:1px;
+    background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.55;
+  }
+  .client-card:hover{border-color:#333a4a;transform:translateY(-2px);box-shadow:0 18px 40px rgba(0,0,0,.35)}
+  .cc-top{display:flex;align-items:center;gap:12px}
+  .avatar{
+    width:46px;height:46px;flex:none;border-radius:14px;display:grid;place-items:center;
+    font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:12px;letter-spacing:.01em;color:#fff;
+    overflow:hidden;white-space:nowrap;
+    background:linear-gradient(150deg,var(--accent-soft),rgba(255,255,255,.02));
+    border:1px solid var(--accent);box-shadow:0 0 22px var(--accent-soft);
+  }
+  .cc-id{min-width:0;flex:1}
+  .cc-name{font-family:"Space Grotesk",sans-serif;font-size:16px;font-weight:600;letter-spacing:-.01em;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .cc-name .mono{font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.08em;color:var(--text3);border:1px solid var(--line);border-radius:6px;padding:2px 6px;text-transform:uppercase}
+  .cc-sector{font-size:11px;color:var(--text3);margin-top:2px;letter-spacing:.02em}
+  .cc-count{
+    flex:none;font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--text3);
+    border:1px solid var(--line);border-radius:999px;padding:4px 9px;white-space:nowrap;
+  }
+  .cc-meta{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(140px,100%),1fr))}
+  .cc-meta span{display:block;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);margin-bottom:3px}
+  .cc-meta p{margin:0;font-size:12px;color:var(--text2);line-height:1.45}
+  .cc-meta a{color:#c4b5fd;text-decoration:none;font-family:"JetBrains Mono",monospace;font-size:11px}
+  .cc-meta a:hover{text-decoration:underline}
+
+  /* report rows */
+  .reports{display:flex;flex-direction:column;gap:8px;margin-top:auto}
+  .report-row{
+    display:flex;align-items:center;gap:12px;text-decoration:none;
+    background:rgba(255,255,255,.018);border:1px solid var(--line2);border-radius:12px;padding:11px 12px;
+    transition:border-color .18s,background .18s,transform .18s;
+  }
+  .report-row:hover{border-color:var(--accent);background:var(--accent-soft);transform:translateX(2px)}
+  .rnum{
+    flex:none;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;
+    font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:500;color:var(--accent);
+    background:var(--accent-soft);border:1px solid var(--accent);
+  }
+  .rmain{min-width:0;flex:1}
+  .rmain b{display:block;font-size:12.5px;font-weight:600;color:var(--text);letter-spacing:.01em}
+  .rmain small{display:block;font-size:10px;color:var(--text3);margin-top:1px}
+  .rstatus{
+    flex:none;font-size:9px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;
+    color:var(--ok-text);background:var(--ok-soft);border:1px solid var(--ok-border);border-radius:999px;padding:3px 8px;white-space:nowrap;
+  }
+  .rgo{flex:none;font-size:11px;font-weight:500;color:#c4b5fd;white-space:nowrap}
+  .report-row:hover .rgo{color:#fff}
+  .empty-reports{
+    border:1px dashed var(--line);border-radius:12px;padding:16px 14px;background:rgba(255,255,255,.012);
+    font-size:11.5px;color:var(--text3);line-height:1.5;
+  }
+  .empty-reports b{display:block;color:var(--text2);font-size:12px;font-weight:500;margin-bottom:3px}
+
+  /* ---------- manuals ---------- */
+  .manual-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr))}
+  .manual-card{
+    --accent:#8b5cf6;--accent-soft:rgba(139,92,246,.14);
+    position:relative;display:flex;flex-direction:column;gap:12px;text-decoration:none;
+    background:linear-gradient(180deg,rgba(19,21,28,.78),rgba(11,13,18,.66));
+    border:1px solid var(--line);border-radius:var(--radius);padding:18px;
+    transition:border-color .2s,transform .2s,box-shadow .2s;overflow:hidden;min-height:172px;
+  }
+  .manual-card::before{
+    content:"";position:absolute;inset:0 0 auto 0;height:1px;
+    background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.55;
+  }
+  .manual-card:hover{border-color:#333a4a;transform:translateY(-2px);box-shadow:0 18px 40px rgba(0,0,0,.35)}
+  .m-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .m-icon{
+    width:38px;height:38px;border-radius:11px;display:grid;place-items:center;flex:none;
+    background:var(--accent-soft);border:1px solid var(--accent);color:var(--accent);
+  }
+  .m-client{
+    font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--text3);border:1px solid var(--line);border-radius:999px;padding:3px 9px;
+  }
+  .manual-card h3{font-family:"Space Grotesk",sans-serif;font-size:15px;font-weight:600;margin:0;letter-spacing:-.01em;color:var(--text)}
+  .manual-card p{margin:0;font-size:11.5px;color:var(--text2);line-height:1.5}
+  .m-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;padding-top:6px;font-size:10.5px;color:var(--text3)}
+  .m-foot .m-go{color:#c4b5fd;font-weight:500}
+  .manual-card:hover .m-go{color:#fff}
+
+  /* ---------- empty / no results ---------- */
+  .empty{
+    grid-column:1/-1;text-align:center;padding:40px 20px;border:1px dashed var(--line);border-radius:var(--radius);
+    color:var(--text3);font-size:12.5px;background:rgba(255,255,255,.012);
+  }
+  .empty b{display:block;color:var(--text2);font-size:14px;font-weight:600;margin-bottom:6px;font-family:"Space Grotesk",sans-serif}
+
+  /* ---------- footer ---------- */
+  .foot{
+    margin-top:38px;padding-top:18px;border-top:1px solid var(--line2);
+    display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:10.5px;color:var(--text3);
+  }
+  .foot .brandline{display:flex;align-items:center;gap:7px}
+  .foot .foot-dot{width:5px;height:5px;border-radius:50%;background:var(--purple)}
+
+  /* ---------- misc ---------- */
+  [hidden]{display:none!important}
+  .panel{animation:fade .25s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  }
+  @media (max-width:600px){
+    .tag{display:none}
+    .toolbar{padding:10px}
+    .search{max-width:none;width:100%;order:3}
+    .rstatus{display:none}
+    .cc-count{display:none}
+  }
+  @media (max-width:400px){
+    .rgo{display:none}
+    .report-row{gap:10px}
+  }
 </style>
 </head>
 <body>
-  <main class="card">
-    <h1>Reportes GLA</h1>
-    <p class="sub">Reportes profesionales preparados por GLA — GrowLink Agency para sus clientes.</p>
-    <a class="item" href="./Reportes%20GLA/GLA%20-%2001%20Reporte%20de%20Veni%20Vidi%20Lex/">
-      <b>No. 01 · Veni Vidi Lex — Septiembre 2026</b>
-      <span>Ver reporte →</span>
-    </a>
-  </main>
+  <div class="wrap">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="GLA — Inicio del directorio">
+        <span class="mark"><img src="https://pub-3eeffe9475844ec988609674470d7176.r2.dev/brand/gla-icon.png" alt="" /></span>
+        <span class="btxt">
+          <b>GLA</b>
+          <small>GrowLink Agency</small>
+        </span>
+      </a>
+      <span class="tag">Directorio · Clientes y proyectos</span>
+    </header>
+
+    <section class="hero">
+      <span class="eyebrow"><span class="dot"></span>Centro de documentos</span>
+      <h1>Reportes y manuales, <em>en un solo lugar</em></h1>
+      <p class="lead">Consulta el avance mensual de cada proyecto y accede a los manuales de usuario de las plataformas que construimos. Un directorio claro para clientes y equipo de GLA.</p>
+
+      <div class="kpis">
+        <div class="kpi"><div class="k">Clientes</div><div class="v" id="kpi-clients">—</div></div>
+        <div class="kpi"><div class="k">Reportes</div><div class="v" id="kpi-reports">—</div></div>
+        <div class="kpi"><div class="k">Manuales</div><div class="v" id="kpi-manuals">—</div></div>
+        <div class="kpi"><div class="k">Última actualización</div><div class="v date" id="kpi-update">—</div></div>
+      </div>
+
+      <div class="toolbar">
+        <div class="tabs" role="tablist" aria-label="Secciones del directorio">
+          <button class="tab active" role="tab" aria-selected="true" data-tab="reportes" id="tab-reportes" aria-controls="panel-reportes">
+            Reportes <span class="cnt" id="tab-count-reports">0</span>
+          </button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="manuales" id="tab-manuales" aria-controls="panel-manuales">
+            Manuales de usuario <span class="cnt" id="tab-count-manuals">0</span>
+          </button>
+        </div>
+        <label class="search" for="search-input">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input id="search-input" type="search" placeholder="Buscar cliente, proyecto o periodo…" autocomplete="off" aria-label="Buscar" />
+        </label>
+      </div>
+    </section>
+
+    <main>
+      <section class="panel" id="panel-reportes" role="tabpanel" aria-labelledby="tab-reportes">
+        <div class="section-head">
+          <h2>Reportes mensuales</h2>
+          <span class="rule"></span>
+          <span class="count" id="reports-count"></span>
+        </div>
+
+        <div class="chips" id="chips" role="group" aria-label="Filtrar por cliente"></div>
+        <div class="grid" id="reports-grid"></div>
+      </section>
+
+      <section class="panel" id="panel-manuales" role="tabpanel" aria-labelledby="tab-manuales" hidden>
+        <div class="section-head">
+          <h2>Manuales de usuario</h2>
+          <span class="rule"></span>
+          <span class="count" id="manuals-count"></span>
+        </div>
+        <div class="manual-grid" id="manuals-grid"></div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <span class="brandline"><span class="foot-dot"></span>GLA · GrowLink Agency — Documentos de clientes</span>
+      <span id="foot-updated">Actualizado: —</span>
+    </footer>
+  </div>
+
+<script>
+  var CLIENTS = [
+    {
+      id: "vvl",
+      name: "Veni Vidi Lex",
+      short: "VVL",
+      initials: "VVL",
+      sector: "Despacho jurídico",
+      project: "Sitio web corporativo y sistema de citas",
+      domain: "vvljuridico.com",
+      domainUrl: "https://vvljuridico.com",
+      accent: "#c6a15b",
+      soft: "rgba(198,161,91,.14)",
+      reports: [
+        {
+          num: "01",
+          period: "Septiembre 2026",
+          date: "25 sep 2026",
+          iso: "2026-09-25",
+          type: "Reporte mensual",
+          status: "Entregado",
+          url: "./Reportes%20GLA/GLA%20-%2001%20Reporte%20de%20Veni%20Vidi%20Lex/"
+        }
+      ],
+      manuals: [
+        {
+          title: "Manual de Usuario",
+          desc: "Guía visual para operar el sitio web y el panel del despacho.",
+          type: "Guía visual",
+          url: "./Manuales%20GLA/Manual%20de%20Usuario%20-%20VVL/"
+        }
+      ]
+    },
+    {
+      id: "anhelo",
+      name: "Anhelo Viajes",
+      short: "Anhelo",
+      initials: "AV",
+      sector: "Agencia de viajes",
+      project: "Sitio web, cotizador y panel de administración",
+      domain: "",
+      domainUrl: "",
+      accent: "#38bdf8",
+      soft: "rgba(56,189,248,.14)",
+      reports: [],
+      manuals: [
+        {
+          title: "Manual de Usuario",
+          desc: "Guía paso a paso del sitio, cotizador y panel administrativo.",
+          type: "Guía visual",
+          url: "./Manuales%20GLA/Manual%20de%20Usuario%20-%20Anhelo%20Viajes/"
+        }
+      ]
+    },
+    {
+      id: "flamingos",
+      name: "Flamingos Tour",
+      short: "Flamingos",
+      initials: "FT",
+      sector: "Transporte turístico",
+      project: "Sitio web, cotizador y panel de administración",
+      domain: "",
+      domainUrl: "",
+      accent: "#fb7185",
+      soft: "rgba(251,113,133,.14)",
+      reports: [],
+      manuals: [
+        {
+          title: "Manual de Usuario",
+          desc: "Guía completa del sitio, reservas y panel de administración.",
+          type: "Guía visual",
+          url: "./Manuales%20GLA/Manual%20de%20Usuario%20-%20Flamingos%20Tour/"
+        }
+      ]
+    }
+  ];
+
+  var state = { tab: "reportes", client: "all", q: "" };
+
+  function esc(v){
+    return String(v == null ? "" : v)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+  }
+  function totalReports(){ return CLIENTS.reduce(function(n, c){ return n + c.reports.length; }, 0); }
+  function totalManuals(){ return CLIENTS.reduce(function(n, c){ return n + c.manuals.length; }, 0); }
+
+  function lastUpdate(){
+    var dates = [];
+    CLIENTS.forEach(function(c){
+      c.reports.forEach(function(r){ if(r.iso) dates.push(r.iso); });
+      c.manuals.forEach(function(m){ if(m.iso) dates.push(m.iso); });
+    });
+    if(!dates.length) return "—";
+    dates.sort();
+    var d = new Date(dates[dates.length - 1] + "T00:00:00");
+    if(isNaN(d.getTime())) return "—";
+    return d.toLocaleDateString("es-MX", { day: "2-digit", month: "short", year: "numeric" });
+  }
+
+  function matchesQuery(c, q){
+    if(!q) return true;
+    var parts = [c.name, c.short, c.sector, c.project, c.domain || ""];
+    c.reports.forEach(function(r){ parts.push(r.period, r.type, r.status, r.num); });
+    c.manuals.forEach(function(m){ parts.push(m.title, m.desc || "", m.type || ""); });
+    return parts.join(" ").toLowerCase().indexOf(q.toLowerCase()) !== -1;
+  }
+
+  function reportWord(n){ return n === 1 ? "1 reporte" : n + " reportes"; }
+  function manualWord(n){ return n === 1 ? "1 manual" : n + " manuales"; }
+
+  function renderClientCard(c){
+    var reportsHTML;
+    if(c.reports.length){
+      reportsHTML = c.reports.map(function(r){
+        return '<a class="report-row" href="' + r.url + '" target="_blank" rel="noopener">' +
+          '<span class="rnum">' + esc(r.num) + '</span>' +
+          '<span class="rmain"><b>' + esc(r.period) + '</b><small>' + esc(r.type) + ' · ' + esc(r.date) + '</small></span>' +
+          '<span class="rstatus">' + esc(r.status) + '</span>' +
+          '<span class="rgo">Ver &rarr;</span>' +
+        '</a>';
+      }).join("");
+    } else {
+      reportsHTML = '<div class="empty-reports"><b>Sin reportes publicados aún</b>El primer reporte mensual de este proyecto aparecerá aquí.</div>';
+    }
+
+    var domainHTML = c.domain
+      ? '<a href="' + esc(c.domainUrl) + '" target="_blank" rel="noopener">' + esc(c.domain) + '</a>'
+      : '<span style="color:var(--text3)">—</span>';
+
+    return '<article class="client-card" style="--accent:' + c.accent + ';--accent-soft:' + c.soft + '">' +
+      '<div class="cc-top">' +
+        '<div class="avatar">' + esc(c.initials || c.short) + '</div>' +
+        '<div class="cc-id">' +
+          '<div class="cc-name">' + esc(c.name) + '<span class="mono">' + esc(c.short) + '</span></div>' +
+          '<div class="cc-sector">' + esc(c.sector) + '</div>' +
+        '</div>' +
+        '<span class="cc-count">' + reportWord(c.reports.length) + '</span>' +
+      '</div>' +
+      '<div class="cc-meta">' +
+        '<div><span>Proyecto</span><p>' + esc(c.project) + '</p></div>' +
+        '<div><span>Dominio</span><p>' + domainHTML + '</p></div>' +
+      '</div>' +
+      '<div class="reports">' + reportsHTML + '</div>' +
+    '</article>';
+  }
+
+  function renderManualCard(c, m){
+    return '<a class="manual-card" href="' + m.url + '" target="_blank" rel="noopener" style="--accent:' + c.accent + ';--accent-soft:' + c.soft + '">' +
+      '<div class="m-top">' +
+        '<span class="m-icon" aria-hidden="true">' +
+          '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><path d="M9 7h7"></path><path d="M9 11h7"></path></svg>' +
+        '</span>' +
+        '<span class="m-client">' + esc(c.short) + '</span>' +
+      '</div>' +
+      '<h3>' + esc(m.title) + '</h3>' +
+      '<p>' + esc(c.name) + ' · ' + esc(m.desc) + '</p>' +
+      '<div class="m-foot"><span>' + esc(m.type || "Manual") + '</span><span class="m-go">Abrir manual &rarr;</span></div>' +
+    '</a>';
+  }
+
+  function renderChips(){
+    var wrap = document.getElementById("chips");
+    var items = [{ id: "all", label: "Todos", accent: "var(--purple)" }];
+    CLIENTS.forEach(function(c){ items.push({ id: c.id, label: c.short, accent: c.accent }); });
+    wrap.innerHTML = items.map(function(it){
+      var active = state.client === it.id ? " active" : "";
+      return '<button class="chip' + active + '" data-client="' + esc(it.id) + '" style="--accent:' + esc(it.accent) + '" aria-pressed="' + (state.client === it.id) + '">' +
+        (it.id === "all" ? "" : '<span class="cdot"></span>') + esc(it.label) +
+      '</button>';
+    }).join("");
+    Array.prototype.forEach.call(wrap.querySelectorAll(".chip"), function(btn){
+      btn.addEventListener("click", function(){
+        state.client = btn.getAttribute("data-client");
+        renderChips();
+        renderReports();
+      });
+    });
+  }
+
+  function renderReports(){
+    var grid = document.getElementById("reports-grid");
+    var q = state.q.trim();
+    var cards = CLIENTS.filter(function(c){
+      return (state.client === "all" || c.id === state.client) && matchesQuery(c, q);
+    });
+    document.getElementById("reports-count").textContent = cards.length + " de " + CLIENTS.length + " clientes";
+    if(!cards.length){
+      grid.innerHTML = '<div class="empty"><b>Sin resultados</b>No encontramos clientes o reportes con ese criterio.</div>';
+      return;
+    }
+    grid.innerHTML = cards.map(renderClientCard).join("");
+  }
+
+  function renderManuals(){
+    var grid = document.getElementById("manuals-grid");
+    var q = state.q.trim();
+    var rows = [];
+    CLIENTS.forEach(function(c){
+      if(!matchesQuery(c, q)) return;
+      c.manuals.forEach(function(m){ rows.push({ c: c, m: m }); });
+    });
+    document.getElementById("manuals-count").textContent = rows.length + " " + (rows.length === 1 ? "manual" : "manuales");
+    if(!rows.length){
+      grid.innerHTML = '<div class="empty"><b>Sin manuales disponibles</b>Los manuales de usuario se publicarán en esta sección.</div>';
+      return;
+    }
+    grid.innerHTML = rows.map(function(r){ return renderManualCard(r.c, r.m); }).join("");
+  }
+
+  function renderKPIs(){
+    document.getElementById("kpi-clients").textContent = CLIENTS.length;
+    document.getElementById("kpi-reports").textContent = totalReports();
+    document.getElementById("kpi-manuals").textContent = totalManuals();
+    var lu = lastUpdate();
+    document.getElementById("kpi-update").textContent = lu;
+    document.getElementById("foot-updated").textContent = "Actualizado: " + lu;
+    document.getElementById("tab-count-reports").textContent = totalReports();
+    document.getElementById("tab-count-manuals").textContent = totalManuals();
+  }
+
+  function setTab(tab, updateHash){
+    state.tab = tab;
+    Array.prototype.forEach.call(document.querySelectorAll(".tab"), function(t){
+      var on = t.getAttribute("data-tab") === tab;
+      t.classList.toggle("active", on);
+      t.setAttribute("aria-selected", on ? "true" : "false");
+    });
+    document.getElementById("panel-reportes").hidden = tab !== "reportes";
+    document.getElementById("panel-manuales").hidden = tab !== "manuales";
+    if(updateHash){
+      try { history.replaceState(null, "", "#" + tab); } catch(e){}
+    }
+  }
+
+  document.getElementById("search-input").addEventListener("input", function(e){
+    state.q = e.target.value;
+    if(state.tab === "reportes") renderReports(); else renderManuals();
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll(".tab"), function(t){
+    t.addEventListener("click", function(){
+      setTab(t.getAttribute("data-tab"), true);
+      if(state.tab === "reportes") renderReports(); else renderManuals();
+    });
+  });
+
+  window.addEventListener("hashchange", function(){
+    if(location.hash === "#manuales") setTab("manuales", false);
+    else if(location.hash === "#reportes") setTab("reportes", false);
+  });
+
+  renderKPIs();
+  renderChips();
+  renderReports();
+  renderManuals();
+  setTab(location.hash === "#manuales" ? "manuales" : "reportes", false);
+</script>
 </body>
 </html>
