@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GLA - 01 Reporte de Flamingos Tour — Octubre 2026</title>
+<link rel="icon" href="../../assets/clientes/flamingos.png" />
+<meta name="description" content="Reporte mensual de funcionamiento, estabilidad y seguridad del sistema de Flamingos Tour correspondiente a Octubre 2026." />
+<meta name="theme-color" content="#0B0F13" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --navy:#0B0F13; --navy-2:#151A20; --navy-3:#05080A;
+    --gold:#E8AC02; --gold-dark:#B86400; --gold-soft:rgba(232,172,2,.18);
+    --blue:#C96A00; --soft:#FFF3E4;
+    --bg:#f7f7f5; --surface:#fff; --surface-2:#fafbfc;
+    --border:#e5e9ef; --text:#14233a; --muted:#5d6d82;
+    --ok:#1e7e34; --ok-bg:#e7f4ea; --info:#1c5f8a; --info-bg:#e8f2fa;
+    --warn:#a15c00; --warn-bg:#fff4e5; --bad:#b3261e; --bad-bg:#fdecea;
+    --font-d:"Playfair Display",Georgia,serif; --font-b:"Inter",system-ui,-apple-system,sans-serif;
+    --sh:0 12px 34px rgba(0,31,63,.08); --sh-sm:0 6px 18px rgba(0,31,63,.06);
+    --r:18px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{overflow-x:hidden;max-width:100%}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:var(--font-b);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-wrap:break-word}
+  img,video,svg{max-width:100%;height:auto}
+  h1,h2,h3,h4{font-family:var(--font-d);line-height:1.16;color:var(--navy);overflow-wrap:break-word}
+  a{color:var(--blue);text-decoration:none}
+  p{margin-bottom:.85rem}
+  strong{color:var(--navy)}
+  section{scroll-margin-top:84px}
+  .topbar{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+  .topbar .inner{max-width:1180px;margin:0 auto;padding:.7rem clamp(16px,4vw,44px);display:flex;align-items:center;justify-content:space-between;gap:1rem}
+  .topbar .id{display:flex;align-items:center;gap:.65rem;min-width:0}
+  .topbar .mk{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:11px;background:var(--navy);color:#fff;font-family:var(--font-d);font-weight:800;font-size:.95rem;flex:0 0 auto}
+  .topbar .mk.logo{background:#fff;border:1px solid var(--border);padding:4px}
+  .topbar .mk.logo img{width:100%;height:100%;object-fit:contain;border-radius:7px}
+  .topbar .id b{display:block;font-size:.9rem;color:var(--navy);line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .topbar .id span{font-size:.72rem;color:var(--muted)}
+  .topbar .actions{display:flex;gap:.5rem;flex:0 0 auto}
+  .btn{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem .9rem;border-radius:10px;font-size:.82rem;font-weight:600;border:1px solid var(--border);background:#fff;color:var(--navy);cursor:pointer;transition:.18s}
+  .btn:hover{border-color:var(--gold);color:var(--gold-dark)}
+  .btn.solid{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .btn.solid:hover{background:var(--navy-2);color:#fff;border-color:var(--navy-2)}
+  .progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--blue));z-index:80;transition:width .1s linear}
+  .cover{position:relative;background:linear-gradient(155deg,var(--navy) 0%,var(--navy-2) 58%,var(--navy-3) 100%);color:#fff;padding:clamp(46px,9vw,90px) 0 clamp(40px,7vw,72px);overflow:hidden}
+  .cover::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 10% 14%,var(--gold-soft),transparent 44%),radial-gradient(circle at 90% 84%,rgba(95,176,201,.25),transparent 46%);pointer-events:none}
+  .cover::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:46px 46px;mask-image:linear-gradient(180deg,#000,transparent 92%);pointer-events:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,44px);position:relative}
+  .cover-top{display:flex;align-items:center;gap:.85rem;flex-wrap:wrap;margin-bottom:clamp(26px,6vw,50px)}
+  .logo-mark{display:inline-flex;align-items:center;justify-content:center;width:54px;height:54px;border-radius:15px;background:var(--gold);color:#241a06;font-family:var(--font-d);font-weight:800;font-size:1.35rem;box-shadow:0 10px 26px rgba(0,0,0,.30)}
+  .logo-box{display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:16px;background:#fff;padding:8px;box-shadow:0 10px 26px rgba(0,0,0,.30);flex:0 0 auto}
+  .logo-box img{width:100%;height:100%;object-fit:contain}
+  .cover-top .firm b{display:block;font-size:1.05rem;letter-spacing:.3px}
+  .cover-top .firm span{color:rgba(255,255,255,.62);font-size:.82rem}
+  .tag{margin-left:auto;border:1px solid rgba(255,255,255,.28);color:var(--gold);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;padding:.4rem .75rem;border-radius:999px;white-space:nowrap}
+  .kicker{display:inline-block;font-size:.78rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:1rem}
+  .cover h1{color:#fff;font-size:clamp(2rem,6vw,3.7rem);font-weight:800;max-width:17ch}
+  .cover h1 em{font-style:normal;color:var(--gold)}
+  .cover .sub{color:rgba(255,255,255,.82);font-size:clamp(1rem,2.3vw,1.18rem);max-width:62ch;margin-top:1rem}
+  .cover-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:1rem;margin-top:clamp(26px,6vw,48px);border-top:1px solid rgba(255,255,255,.15);padding-top:1.5rem}
+  .cover-meta div span{display:block;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:.25rem}
+  .cover-meta div b{font-size:.98rem;color:#fff;font-weight:600}
+  .layout{display:grid;grid-template-columns:264px minmax(0,1fr);gap:clamp(20px,4vw,50px);max-width:1180px;margin:0 auto;padding:clamp(26px,5vw,52px) clamp(16px,4vw,44px)}
+  main{min-width:0}
+  .sec{padding:clamp(26px,4.6vw,50px) 0;border-top:1px solid var(--border)}
+  .sec:first-child{border-top:none;padding-top:0}
+  .sec-head{display:flex;align-items:baseline;gap:.9rem;margin-bottom:1.3rem}
+  .sec-head .num{font-family:var(--font-d);font-size:clamp(1.5rem,3.6vw,2.2rem);font-weight:800;color:var(--gold);line-height:1;flex:0 0 auto}
+  .sec-head h2{font-size:clamp(1.35rem,3.4vw,2rem);font-weight:700}
+  .lead{font-size:1.05rem;color:var(--muted);max-width:72ch}
+  .toc{position:sticky;top:80px;align-self:start;max-height:calc(100vh - 100px);overflow:auto}
+  .toc-title{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.85rem;font-weight:600}
+  .toc-menu{display:none;width:100%;background:none;border:none;font-family:var(--font-b);font-size:.92rem;color:var(--navy);font-weight:600;align-items:center;gap:.65rem;cursor:pointer;padding:0}
+  .toc-menu .chev{margin-left:auto;transition:transform .2s;color:var(--gold)}
+  .toc.open .toc-menu .chev{transform:rotate(180deg)}
+  .toc ol{list-style:none;counter-reset:toc}
+  .toc li{counter-increment:toc}
+  .toc a{display:flex;gap:.55rem;align-items:baseline;padding:.44rem .6rem;border-radius:9px;color:var(--muted);font-size:.89rem;border-left:3px solid transparent;transition:.18s}
+  .toc a::before{content:counter(toc,decimal-leading-zero);font-family:var(--font-d);font-weight:700;color:var(--gold);font-size:.78rem;min-width:1.7em}
+  .toc a:hover{background:rgba(0,31,63,.05);color:var(--navy)}
+  .toc a.active{background:rgba(0,31,63,.06);color:var(--navy);border-left-color:var(--gold);font-weight:600}
+  .toc-toggle{display:none}
+  .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(228px,100%),1fr))}
+  .grid-2{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))}
+  .kpi{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem 1.3rem;box-shadow:var(--sh-sm);position:relative;overflow:hidden}
+  .kpi::after{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--gold),var(--gold-dark))}
+  .kpi .ic{width:34px;height:34px;border-radius:10px;background:var(--gold-soft);display:flex;align-items:center;justify-content:center;color:var(--gold-dark);margin-bottom:.7rem}
+  .kpi .val{font-family:var(--font-d);font-size:clamp(1.9rem,4.6vw,2.5rem);font-weight:800;color:var(--navy);line-height:1}
+  .kpi .lbl{font-size:.85rem;color:var(--muted);margin-top:.4rem;font-weight:500}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.3rem 1.35rem;box-shadow:var(--sh-sm)}
+  .card h4{font-size:1.02rem;margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem}
+  .card h4 svg{color:var(--gold-dark);flex:0 0 auto}
+  .card p{font-size:.9rem;color:var(--muted);margin-bottom:.4rem}
+  .card ul{list-style:none;margin-top:.35rem}
+  .card li{font-size:.88rem;color:var(--muted);padding:.3rem 0 .3rem 1.4rem;position:relative}
+  .card li::before{content:"";position:absolute;left:.15rem;top:.72rem;width:6px;height:6px;border-radius:50%;background:var(--gold)}
+  .table-scroll{overflow-x:auto;border:1px solid var(--border);border-radius:14px;background:var(--surface);box-shadow:var(--sh-sm)}
+  table{width:100%;border-collapse:collapse;min-width:520px}
+  th,td{text-align:left;padding:.78rem 1rem;font-size:.89rem;border-bottom:1px solid var(--border)}
+  th{background:var(--navy);color:#fff;font-weight:600;font-size:.76rem;letter-spacing:.05em;text-transform:uppercase}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr:nth-child(even){background:var(--surface-2)}
+  td code{background:var(--soft);color:var(--navy);padding:.1rem .42rem;border-radius:6px;font-size:.84em;white-space:nowrap}
+  .badge{display:inline-flex;align-items:center;gap:.4rem;padding:.24rem .65rem;border-radius:999px;font-size:.75rem;font-weight:600;white-space:nowrap}
+  .badge.ok{background:var(--ok-bg);color:var(--ok)}
+  .badge.info{background:var(--info-bg);color:var(--info)}
+  .badge.warn{background:var(--warn-bg);color:var(--warn)}
+  .badge.bad{background:var(--bad-bg);color:var(--bad)}
+  .dot{width:8px;height:8px;border-radius:50%;background:currentColor;display:inline-block;flex:0 0 auto}
+  .statuslist{display:flex;flex-direction:column;gap:.55rem}
+  .statuslist .row{display:flex;align-items:center;justify-content:space-between;gap:1rem;background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:.85rem 1.1rem;box-shadow:var(--sh-sm)}
+  .statuslist .row .t{min-width:0}
+  .statuslist .row b{font-size:.94rem;font-weight:600;color:var(--text);display:block}
+  .statuslist .row small{display:block;color:var(--muted);font-size:.79rem;font-weight:400}
+  .bars{display:flex;flex-direction:column;gap:.75rem}
+  .bar b{font-size:.86rem;color:var(--text);font-weight:600;display:flex;justify-content:space-between}
+  .bar b span{color:var(--gold-dark);font-family:var(--font-d)}
+  .bar .track{height:9px;border-radius:6px;background:#eef2f6;margin-top:.35rem;overflow:hidden}
+  .bar .fill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--navy-2),var(--blue))}
+  .timeline{position:relative;padding-left:1.7rem;margin-top:.5rem}
+  .timeline::before{content:"";position:absolute;left:.42rem;top:.5rem;bottom:.5rem;width:2px;background:linear-gradient(180deg,var(--gold),var(--blue))}
+  .tl{position:relative;padding:0 0 1.4rem .65rem}
+  .tl:last-child{padding-bottom:0}
+  .tl::before{content:"";position:absolute;left:-1.62rem;top:.4rem;width:13px;height:13px;border-radius:50%;background:var(--surface);border:3px solid var(--gold)}
+  .tl .when{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);font-weight:600}
+  .tl h4{font-size:1rem;margin:.15rem 0 .35rem}
+  .tl p{font-size:.89rem;color:var(--muted);margin:0}
+  .highlight{background:linear-gradient(140deg,var(--navy),var(--navy-2));color:#fff;border-radius:var(--r);padding:clamp(1.4rem,4vw,2.1rem);box-shadow:var(--sh);position:relative;overflow:hidden}
+  .highlight::before{content:"";position:absolute;right:-46px;top:-46px;width:190px;height:190px;border-radius:50%;background:var(--gold-soft)}
+  .highlight h3{color:#fff;font-size:clamp(1.12rem,2.8vw,1.45rem);margin-bottom:.55rem;position:relative}
+  .highlight p{color:rgba(255,255,255,.86);margin:0;position:relative;font-size:.97rem}
+  .highlight .accent{color:var(--gold);font-weight:700}
+  .check{list-style:none;display:grid;gap:.5rem}
+  .check li{position:relative;padding:.55rem .8rem .55rem 2.4rem;background:var(--surface);border:1px solid var(--border);border-radius:12px;font-size:.9rem;color:var(--text);box-shadow:var(--sh-sm)}
+  .check li::before{content:"";position:absolute;left:.85rem;top:.72rem;width:17px;height:17px;border-radius:6px;background:var(--ok-bg);border:1.5px solid var(--ok)}
+  .check li::after{content:"";position:absolute;left:1.12rem;top:.95rem;width:4px;height:8px;border:solid var(--ok);border-width:0 2px 2px 0;transform:rotate(45deg)}
+  .steps{counter-reset:st;display:grid;gap:12px}
+  .step{display:flex;gap:1rem;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1rem 1.15rem;box-shadow:var(--sh-sm)}
+  .step .n{counter-increment:st;flex:0 0 auto;width:34px;height:34px;border-radius:10px;background:var(--gold);color:#241a06;display:flex;align-items:center;justify-content:center;font-weight:700;font-family:var(--font-d)}
+  .step .n::before{content:counter(st,decimal-leading-zero)}
+  .step b{display:block;font-size:.95rem;color:var(--navy)}
+  .step p{font-size:.87rem;color:var(--muted);margin:0}
+  .footer{background:var(--navy);color:#fff;padding:clamp(38px,7vw,68px) 0 28px;margin-top:20px}
+  .footer .fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:2rem}
+  .footer h3{color:#fff;font-size:1.3rem;margin-bottom:.5rem}
+  .footer p,.footer a{color:rgba(255,255,255,.78);font-size:.9rem}
+  .footer .block b{color:#fff;display:block;font-size:.92rem;margin-bottom:.3rem}
+  .footer .sig{border-top:1px solid rgba(255,255,255,.15);margin-top:2rem;padding-top:1.3rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.8rem;color:rgba(255,255,255,.6)}
+  .note{font-size:.8rem;color:var(--muted);margin-top:1rem}
+  .to-top{position:fixed;right:1.1rem;bottom:1.1rem;width:46px;height:46px;border-radius:50%;border:none;background:var(--navy);color:#fff;font-size:1.15rem;cursor:pointer;box-shadow:0 10px 24px rgba(0,31,63,.3);opacity:0;pointer-events:none;transition:opacity .25s}
+  .to-top.show{opacity:1;pointer-events:auto}
+  @media (max-width:920px){
+    .layout{display:block}
+    .toc{position:static;max-height:none;margin-bottom:1.5rem;border:1px solid var(--border);border-radius:14px;background:var(--surface);box-shadow:var(--sh-sm);overflow:hidden}
+    .toc-title{display:none}
+    .toc-menu{display:flex;padding:1rem 1.2rem}
+    .toc ol{display:none;padding:.4rem .6rem 1rem}
+    .toc.open ol{display:block}
+    .topbar .id b{font-size:.82rem}
+  }
+  @media (max-width:520px){ .topbar .id span{display:none} .tag{display:none} }
+  @media print{
+    .topbar,.toc,.to-top,.progress,.btn{display:none!important}
+    .layout{display:block;max-width:none;padding:0}
+    body{background:#fff}
+    .sec{page-break-inside:avoid}
+    .cover{page-break-after:always}
+    .kpi,.card,.table-scroll,.step,.highlight,.statuslist .row,.check li{box-shadow:none}
+    .footer{background:#fff;color:var(--navy)}
+    .footer p,.footer a{color:#333}
+    .footer h3{color:var(--navy)}
+  }
+</style>
+</head>
+<body>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<div class="topbar">
+  <div class="inner">
+    <div class="id">
+      <span class="mk logo"><img src="../../assets/clientes/flamingos.png" alt="Flamingos Tour"></span>
+      <div>
+        <b>Flamingos Tour — Reporte mensual</b>
+        <span>Octubre 2026 · No. 01</span>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn solid" onclick="window.print()">Descargar PDF</button>
+    </div>
+  </div>
+</div>
+
+<header class="cover" id="portada">
+  <div class="wrap">
+    <div class="cover-top">
+      <span class="logo-box"><img src="../../assets/clientes/flamingos.png" alt="Flamingos Tour"></span>
+      <div class="firm">
+        <b>Flamingos Tour</b>
+        <span>Transporte turístico y viajes en grupo · Celaya, Guanajuato</span>
+      </div>
+      <span class="tag">Confidencial</span>
+    </div>
+    <span class="kicker">Reporte mensual de funcionamiento</span>
+    <h1>Un sistema listo para <em>vender viajes</em></h1>
+    <p class="sub">Resumen del funcionamiento, las mejoras y el estado del sitio web, el cotizador y el panel de administración durante octubre de 2026.</p>
+    <div class="cover-meta"><div><span>Cliente</span><b>Flamingos Tour</b></div><div><span>Periodo</span><b>Octubre 2026</b></div><div><span>Reporte</span><b>No. 01</b></div><div><span>Preparado por</span><b>GLA — GrowLink Agency</b></div></div>
+  </div>
+</header>
+
+<div class="layout">
+  <nav class="toc" id="toc" aria-label="Índice del reporte">
+    <h3 class="toc-title">Índice del reporte</h3>
+    <button class="toc-menu" id="tocToggle" aria-controls="tocList" aria-expanded="false">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <span>Menú del reporte</span>
+      <span class="chev">▾</span>
+    </button>
+    <ol id="tocList"><li><a href="#resumen">Resumen ejecutivo</a></li><li><a href="#ficha">Ficha del proyecto</a></li><li><a href="#estado">Estado y disponibilidad</a></li><li><a href="#actividad">Actividad del mes</a></li><li><a href="#web">Sitio web público</a></li><li><a href="#panel">Panel de administración</a></li><li><a href="#integraciones">Pagos e integraciones</a></li><li><a href="#seguridad">Dominio y seguridad</a></li><li><a href="#datos">Datos del sistema</a></li><li><a href="#hallazgos">Hallazgos y recomendaciones</a></li><li><a href="#proximos">Próximos pasos</a></li><li><a href="#cierre">Cierre y contacto</a></li></ol>
+  </nav>
+  <main><section class="sec" id="resumen"><div class="sec-head"><span class="num">01</span><h2>Resumen ejecutivo</h2></div><p class="lead">Flamingos Tour cerró octubre con su sistema digital <strong>completo y en operación</strong>. Durante el mes se publicaron <strong>4 mejoras</strong> en el catálogo, las unidades y el acceso, y el <strong>20 de octubre</strong> la plataforma se migró a <strong>Cloudflare</strong> para operar con mayor velocidad y disponibilidad. El catálogo quedó con <strong>2 unidades</strong>, <strong>3 charters</strong> y <strong>307 destinos</strong> en el cotizador. No se registraron interrupciones.</p>
+      <div class="grid" style="margin:1.6rem 0"><div class="kpi"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div><div class="val">4</div><div class="lbl">Mejoras y actualizaciones publicadas</div></div><div class="kpi"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5M3 17l9 5 9-5"/></svg></div><div class="val">3</div><div class="lbl">Publicaciones en Cloudflare</div></div><div class="kpi"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="15" rx="2"/><path d="M3 11h18M7 21v-3M17 21v-3M7 7h.01M17 7h.01"/></svg></div><div class="val">2</div><div class="lbl">Unidades en el catálogo</div></div><div class="kpi"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3V6Z"/><path d="M9 3v15M15 6v15"/></svg></div><div class="val">307</div><div class="lbl">Destinos en el cotizador</div></div></div>
+      <div class="highlight" style="margin-bottom:1.4rem"><h3>En una frase</h3><p>El sitio, el cotizador y el panel operan sobre <span class="accent">Cloudflare</span>, con dos unidades, tres charters y un tarifario de 307 destinos, listos para recibir solicitudes y apartados.</p></div>
+      <div class="statuslist"><div class="row"><div class="t"><b>Sitio web público</b><small>Landing, flota, destinos, pagos y preguntas frecuentes</small></div><span class="badge ok"><span class="dot"></span>Óptimo</span></div><div class="row"><div class="t"><b>Cotizador en línea</b><small>Lista de precios 2026, 307 destinos y 2 unidades</small></div><span class="badge ok"><span class="dot"></span>Óptimo</span></div><div class="row"><div class="t"><b>Apartado y pagos</b><small>Anticipo, transferencia bancaria y Mercado Pago</small></div><span class="badge ok"><span class="dot"></span>Óptimo</span></div><div class="row"><div class="t"><b>Panel administrativo</b><small>Prospectos, apartados, unidades, charters y pagos</small></div><span class="badge ok"><span class="dot"></span>Óptimo</span></div><div class="row"><div class="t"><b>Base de datos y archivos</b><small>Cloudflare D1 y almacenamiento R2</small></div><span class="badge ok"><span class="dot"></span>Óptimo</span></div></div></section><section class="sec" id="ficha"><div class="sec-head"><span class="num">02</span><h2>Ficha del proyecto</h2></div><p class="lead">Datos generales del sistema que administramos para Flamingos Tour.</p>
+      <div style="margin-top:1.2rem"><div class="table-scroll"><table><tbody><tr><th style="width:34%">Cliente</th><td>Flamingos Tour — Transporte turístico y viajes en grupo</td></tr><tr><th style="width:34%">Proyecto</th><td>Sitio web, cotizador, apartado y panel de administración</td></tr><tr><th style="width:34%">Dirección web</th><td><code>flamingos-tour.ondamx.workers.dev</code> · versión segura <code>https</code></td></tr><tr><th style="width:34%">Cobertura</th><td>Celaya, Guanajuato y salidas desde el Bajío</td></tr><tr><th style="width:34%">Catálogo</th><td>2 unidades (Sprinter 20 y Camión Volvo 48) y 3 charters activos</td></tr><tr><th style="width:34%">Tarifario</th><td>2 tipos de unidad y 307 destinos</td></tr><tr><th style="width:34%">Infraestructura</th><td>Cloudflare Workers + base de datos D1 + almacenamiento R2</td></tr><tr><th style="width:34%">Tecnología</th><td>Next.js con OpenNext, adaptado a celular, tablet y computadora</td></tr><tr><th style="width:34%">Base de datos</th><td>Cloudflare D1 con 11 conjuntos de datos del negocio</td></tr><tr><th style="width:34%">Archivos</th><td>Cloudflare R2 (bucket flamingos-media)</td></tr><tr><th style="width:34%">Última actualización</th><td>20 de octubre de 2026</td></tr><tr><th style="width:34%">Estado general</th><td><span class="badge ok"><span class="dot"></span>Activo y estable</span></td></tr></tbody></table></div></div></section><section class="sec" id="estado"><div class="sec-head"><span class="num">03</span><h2>Estado y disponibilidad</h2></div><p class="lead">Verificamos el acceso a los componentes principales del sistema. Todos respondieron correctamente.</p>
+      <div style="margin-top:1.2rem"><div class="table-scroll"><table><thead><tr><th>Componente</th><th>Resultado</th><th>Tiempo de respuesta</th><th>Estado</th></tr></thead><tbody><tr><td>Página principal</td><td>Responde correctamente</td><td>Menos de 0.4 s</td><td><span class="badge ok"><span class="dot"></span>Disponible</span></td></tr><tr><td>Cotizador</td><td>Responde correctamente</td><td>Menos de 0.6 s</td><td><span class="badge ok"><span class="dot"></span>Disponible</span></td></tr><tr><td>Apartado de viaje</td><td>Responde correctamente</td><td>Menos de 0.3 s</td><td><span class="badge ok"><span class="dot"></span>Disponible</span></td></tr><tr><td>Panel administrativo</td><td>Acceso protegido con usuario y contraseña</td><td>Menos de 0.3 s</td><td><span class="badge ok"><span class="dot"></span>Disponible</span></td></tr><tr><td>Propuesta y levantamiento</td><td>Responden correctamente</td><td>Menos de 0.3 s</td><td><span class="badge ok"><span class="dot"></span>Disponible</span></td></tr><tr><td>Archivos internos</td><td>Acceso rechazado correctamente</td><td>—</td><td><span class="badge ok"><span class="dot"></span>Protegidos</span></td></tr></tbody></table></div></div>
+      <p class="note">Verificación realizada al cierre de este reporte. Todas las rutas públicas respondieron correctamente y las rutas internas exigen autenticación.</p></section><section class="sec" id="actividad"><div class="sec-head"><span class="num">04</span><h2>Actividad del mes</h2></div><p class="lead">Esto es lo que se trabajó y quedó publicado durante octubre, ordenado por fechas. El sistema había arrancado a finales de septiembre; en octubre se completó y se migró a Cloudflare.</p>
+      <div class="timeline" style="margin-top:1.4rem"><div class="tl"><span class="when">1 de octubre</span><h4>Ajuste de pagos</h4><p>Se eliminó un botón duplicado de conexión con Mercado Pago en el panel para dejar un solo acceso claro y evitar confusiones al equipo.</p></div><div class="tl"><span class="when">2 de octubre</span><h4>Galería de unidades y acceso</h4><p>Se agregó el carrusel de fotos por unidad con carga desde el panel y se reforzó el acceso del cliente con el usuario <code>flamingos26</code>.</p></div><div class="tl"><span class="when">5 de octubre</span><h4>Catálogo y cuentas bancarias</h4><p>Se sumaron fotos y videos de las unidades, se incorporó el <strong>Camión Volvo de 48 pasajeros</strong>, se fijó el anticipo y se actualizaron las cuentas bancarias para los apartados.</p></div><div class="tl"><span class="when">20 de octubre</span><h4>Migración a Cloudflare</h4><p>La plataforma se trasladó a <strong>Cloudflare Workers</strong>, con base de datos <strong>D1</strong> y archivos en <strong>R2</strong>. Se publicaron 3 versiones y se validó el funcionamiento del sitio, el cotizador y el panel.</p></div></div></section><section class="sec" id="web"><div class="sec-head"><span class="num">05</span><h2>Sitio web público</h2></div><p class="lead">La página de Flamingos Tour se encuentra completa, activa y adaptada a todo tipo de dispositivo.</p>
+      <div class="grid" style="margin-top:1.2rem"><div class="card"><h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5M3 17l9 5 9-5"/></svg>Secciones activas</h4><ul><li>Inicio y presentación de la marca</li><li>Flota: Sprinter 20 y Camión Volvo 48</li><li>Cotizador en línea</li><li>Próximos viajes y charters</li><li>Garantías y confianza</li><li>Destinos y paquetes</li><li>Testimonios</li><li>Formas de pago y apartado</li><li>Preguntas frecuentes</li><li>Contacto y WhatsApp</li></ul></div><div class="card"><h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z"/></svg>Experiencia del visitante</h4><ul><li>Diseño adaptado a celular, tablet y computadora</li><li>Botón de WhatsApp siempre visible</li><li>Cotizador con la lista de precios 2026</li><li>Apartado en línea con anticipo</li><li>Páginas legales y de confianza</li><li>Carga rápida desde Cloudflare</li></ul></div><div class="card"><h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Resultado</h4><p>El sitio se mantiene <strong>en línea y sin fallas</strong>. La migración a Cloudflare dejó una base más rápida y preparada para recibir solicitudes.</p></div></div>
+      <p class="note">El catálogo público muestra 2 unidades y 3 charters; el cotizador contiene 307 destinos.</p></section><section class="sec" id="panel"><div class="sec-head"><span class="num">06</span><h2>Panel de administración</h2></div><p class="lead">Es la herramienta privada del equipo, protegida con usuario y contraseña.</p>
+      <div class="grid" style="margin-top:1.2rem"><div class="card"><h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>Dashboard y prospectos</h4><ul><li>Resumen de solicitudes</li><li>Nuevos, reservados y no cerrados</li><li>Seguimiento por cliente</li><li>Acceso rápido a cada módulo</li></ul></div><div class="card"><h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8H6a2 2 0 0 1 0-4h12v4"/><path d="M4 6v12a2 2 0 0 0 2 2h14v-4"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>Apartados y pagos</h4><ul><li>Registro de apartados</li><li>Comprobantes de transferencia</li><li>Pagos con Mercado Pago</li><li>Consulta del estado de cada viaje</li></ul></div><div class="card"><h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="15" rx="2"/><path d="M3 11h18M7 21v-3M17 21v-3M7 7h.01M17 7h.01"/></svg>Unidades y charters</h4><ul><li>Alta y edición de unidades</li><li>Fotos y videos por unidad</li><li>Charters y fechas de salida</li><li>Recargos por temporada</li></ul></div><div class="card"><h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3h.1a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9v.1a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg>Enlaces y levantamiento</h4><ul><li>Enlaces internos del sistema</li><li>Formulario de levantamiento</li><li>Datos del negocio y contacto</li><li>Acceso para administrador y cliente</li></ul></div></div>
+      <p class="note">El panel opera sobre la base de datos en Cloudflare, por lo que la información queda disponible desde cualquier dispositivo con acceso.</p></section><section class="sec" id="integraciones"><div class="sec-head"><span class="num">07</span><h2>Pagos e integraciones</h2></div><p class="lead">El sistema conecta los canales que el negocio necesita para recibir solicitudes y cobrar.</p>
+      <div style="margin:1.2rem 0"><div class="table-scroll"><table><thead><tr><th>Integración</th><th>Función</th><th>Estado</th></tr></thead><tbody><tr><td>WhatsApp</td><td>Atención directa y confirmación de viajes</td><td><span class="badge ok"><span class="dot"></span>Activo</span></td></tr><tr><td>Mercado Pago</td><td>Cobro en línea y vinculación de la cuenta del negocio</td><td><span class="badge warn"><span class="dot"></span>Por vincular</span></td></tr><tr><td>Transferencia bancaria</td><td>Apartado con anticipo y comprobante</td><td><span class="badge ok"><span class="dot"></span>Activo</span></td></tr><tr><td>Cloudflare D1 y R2</td><td>Base de datos y archivos del sistema</td><td><span class="badge ok"><span class="dot"></span>Activo</span></td></tr></tbody></table></div></div>
+      <div class="grid"><div class="card"><h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z"/></svg>WhatsApp</h4><p>El número del negocio queda visible en todo el sitio y recibe las solicitudes con el resumen del viaje.</p></div><div class="card"><h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8H6a2 2 0 0 1 0-4h12v4"/><path d="M4 6v12a2 2 0 0 0 2 2h14v-4"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>Mercado Pago</h4><p>La integración está lista para vincular la cuenta del negocio; al cierre del reporte la vinculación seguía pendiente.</p></div><div class="card"><h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>Transferencia</h4><p>El cliente puede apartar con anticipo por transferencia y subir su comprobante; el equipo lo revisa desde el panel.</p></div><div class="card"><h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/></svg>Cloudflare</h4><p>La base de datos D1 y los archivos en R2 viven en la misma plataforma, con disponibilidad de la nube.</p></div></div>
+      <p class="note">Recomendación: completar la vinculación de Mercado Pago para que los cobros en línea lleguen directamente a la cuenta de Flamingos Tour.</p></section><section class="sec" id="seguridad"><div class="sec-head"><span class="num">08</span><h2>Dominio y seguridad</h2></div><p class="lead">El sistema opera con conexión segura y el panel está protegido. Revisamos los accesos y la información interna.</p>
+      <div class="grid" style="margin:1.3rem 0"><div class="card"><h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Certificado de seguridad</h4><p><strong>HTTPS activo.</strong> La conexión del sitio es segura y el certificado se renueva automáticamente.</p></div><div class="card"><h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 7a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z"/></svg>Acceso al panel</h4><p>El panel solicita <strong>usuario y contraseña</strong>. Existen dos niveles: administrador y cliente.</p></div><div class="card"><h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>Información interna</h4><p>Los archivos de configuración y la información interna <strong>no son accesibles públicamente</strong>.</p></div></div>
+      <div class="highlight"><h3>Operación en Cloudflare</h3><p>El sistema corre sobre Cloudflare, con certificado HTTPS, base de datos D1 y archivos en R2. La información del negocio se mantiene separada de la web pública y las rutas internas exigen autenticación.</p></div>
+      <ul class="check" style="margin-top:1.3rem"><li>Conexión segura HTTPS activa</li><li>Panel con usuario y contraseña</li><li>Roles de administrador y cliente</li><li>Archivos internos no accesibles</li><li>Rutas API internas protegidas</li><li>Base de datos en Cloudflare D1</li><li>Archivos en Cloudflare R2</li><li>Monitoreo de la aplicación activo</li></ul></section><section class="sec" id="datos"><div class="sec-head"><span class="num">09</span><h2>Datos del sistema</h2></div><p class="lead">Lo que ya vive dentro del sistema al cierre de octubre.</p>
+      <div class="grid-2" style="margin-top:1.2rem">
+        <div class="card"><h4>Contenido registrado</h4><div class="bars"><div class="bar"><b>Unidades en catálogo <span>2</span></b><div class="track"><div class="fill" style="width:20%"></div></div></div><div class="bar"><b>Charters activos <span>3</span></b><div class="track"><div class="fill" style="width:30%"></div></div></div><div class="bar"><b>Tipos de unidad en tarifario <span>2</span></b><div class="track"><div class="fill" style="width:20%"></div></div></div><div class="bar"><b>Destinos en tarifario <span>307</span></b><div class="track"><div class="fill" style="width:100%"></div></div></div><div class="bar"><b>Conjuntos de datos en D1 <span>11</span></b><div class="track"><div class="fill" style="width:55%"></div></div></div></div></div>
+        <div class="card"><h4>Operación habilitada</h4><ul><li>2 unidades con galería de fotos y video.</li><li>3 charters activos con salidas programadas.</li><li>Cotizador con 307 destinos y 2 tipos de unidad.</li><li>Panel con prospectos, apartados, unidades y pagos.</li><li>Acceso para administrador y cliente.</li></ul><p style="margin-top:.7rem"><span class="badge info"><span class="dot"></span>2 unidades · 3 charters · 307 destinos</span></p></div>
+      </div></section><section class="sec" id="hallazgos"><div class="sec-head"><span class="num">10</span><h2>Hallazgos y recomendaciones</h2></div><p class="lead">La operación y la migración quedaron en verde. Hay dos recomendaciones de seguridad y pagos para el siguiente periodo.</p>
+      <div class="statuslist"><div class="row"><div class="t"><b>Sitio, cotizador y panel</b><small>Sin hallazgos. Rutas activas y operación estable.</small></div><span class="badge ok"><span class="dot"></span>Verde</span></div><div class="row"><div class="t"><b>Migración a Cloudflare</b><small>Completada sin interrupciones; D1 y R2 activos.</small></div><span class="badge ok"><span class="dot"></span>Verde</span></div><div class="row"><div class="t"><b>Catálogo y pagos</b><small>2 unidades, 3 charters y cobro por transferencia listos.</small></div><span class="badge ok"><span class="dot"></span>Verde</span></div><div class="row"><div class="t"><b>Cabeceras de seguridad</b><small>Falta configurar HSTS, CSP y X-Frame-Options en las respuestas.</small></div><span class="badge warn"><span class="dot"></span>Recomendación</span></div><div class="row"><div class="t"><b>Vinculación de Mercado Pago</b><small>La integración está lista; la cuenta del negocio aún no se vincula.</small></div><span class="badge warn"><span class="dot"></span>Pendiente</span></div><div class="row"><div class="t"><b>Medición y respaldos</b><small>Sin Meta Pixel ni respaldo programado de la base D1.</small></div><span class="badge info"><span class="dot"></span>Oportunidad</span></div></div>
+      <div class="grid" style="margin-top:1.4rem">
+        <div class="card"><h4>Fortalezas del mes</h4><ul><li>Migración a Cloudflare sin interrupciones</li><li>Catálogo con 2 unidades y 3 charters</li><li>Cotizador con 307 destinos</li><li>Acceso del cliente reforzado</li><li>Pagos por transferencia listos</li></ul></div>
+        <div class="card"><h4>Oportunidades de mejora</h4><ul><li>Configurar cabeceras de seguridad (HSTS, CSP, X-Frame-Options)</li><li>Vincular la cuenta de Mercado Pago</li><li>Programar respaldos semanales de la base D1</li><li>Activar Meta Pixel o analítica para medir conversiones</li><li>Difundir el sitio para recibir las primeras solicitudes</li><li>Mantener fotos, unidades y fechas de salida al día</li></ul></div>
+      </div></section><section class="sec" id="proximos"><div class="sec-head"><span class="num">11</span><h2>Próximos pasos</h2></div><p class="lead">Plan sugerido para el siguiente periodo, enfocado en seguridad, cobros y difusión.</p>
+      <div style="margin-top:1.2rem"><div class="steps"><div class="step"><div class="n"></div><div><b>Reforzar las cabeceras de seguridad</b><p>Activar HSTS, CSP, X-Frame-Options y demás protecciones en Cloudflare para endurecer las respuestas del sitio.</p></div></div><div class="step"><div class="n"></div><div><b>Vincular Mercado Pago</b><p>Conectar la cuenta del negocio para que los cobros en línea lleguen directamente a Flamingos Tour.</p></div></div><div class="step"><div class="n"></div><div><b>Programar respaldos de la base</b><p>Dejar un respaldo automático semanal de la base D1 y verificar la recuperación.</p></div></div><div class="step"><div class="n"></div><div><b>Activar la medición de conversiones</b><p>Instalar Meta Pixel o analítica para conocer visitas, cotizaciones y apartados.</p></div></div><div class="step"><div class="n"></div><div><b>Difundir el sitio</b><p>Promover la página y el cotizador para recibir las primeras solicitudes y darles seguimiento en el panel.</p></div></div></div></div></section><section class="sec" id="cierre"><div class="sec-head"><span class="num">12</span><h2>Cierre y contacto</h2></div><p class="lead">Flamingos Tour cerró octubre con su plataforma <strong>completa, migrada a Cloudflare y lista para operar</strong>. Agradecemos la confianza del equipo y quedamos a su disposición para cualquier duda o ajuste.</p>
+      <div class="highlight" style="margin-top:1.4rem"><h3>Estamos para servirle</h3><p>Para dudas, nuevas solicitudes o soporte, contacte a GLA — GrowLink Agency. Con gusto le apoyamos.</p></div></section></main>
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <h3>GLA — GrowLink Agency</h3>
+        <p>Tecnología y soluciones digitales para negocios. Este reporte fue elaborado a partir del análisis real del funcionamiento del sistema durante el periodo indicado.</p>
+      </div>
+      <div class="block">
+        <b>Contacto</b>
+        <p>WhatsApp / Teléfono: +52 411 115 8128</p>
+        <p>Proyecto: Flamingos Tour</p>
+        <p>Sitio: flamingos-tour.ondamx.workers.dev</p>
+      </div>
+      <div class="block">
+        <b>Resumen del periodo</b>
+        <p>Octubre 2026 · Reporte No. 01</p><p>4 mejoras · 3 publicaciones · 0 incidencias</p><p>2 unidades · 3 charters · 307 destinos</p>
+      </div>
+    </div>
+    <div class="sig">
+      <span>GLA — GrowLink Agency · Reporte confidencial preparado para Flamingos Tour</span>
+      <span>Documento informativo · No incluye información de precios</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Volver arriba">↑</button>
+
+<script>
+  var progress = document.getElementById('progress');
+  function onScroll(){
+    var h = document.documentElement;
+    var sc = h.scrollTop || document.body.scrollTop;
+    var max = h.scrollHeight - h.clientHeight;
+    progress.style.width = (max > 0 ? (sc / max) * 100 : 0) + '%';
+    document.getElementById('toTop').classList.toggle('show', sc > 420);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+  document.getElementById('toTop').addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+  var toc = document.getElementById('toc');
+  var tocBtn = document.getElementById('tocToggle');
+  tocBtn.addEventListener('click', function(){
+    var open = toc.classList.toggle('open');
+    tocBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  toc.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ toc.classList.remove('open'); tocBtn.setAttribute('aria-expanded','false'); }); });
+  var links = Array.prototype.slice.call(toc.querySelectorAll('a'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  function setActive(id){ links.forEach(function(l){ l.classList.toggle('active', l.getAttribute('href') === '#'+id); }); }
+  if ('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if (e.isIntersecting) setActive(e.target.id); });
+    }, {rootMargin:'-25% 0px -65% 0px', threshold:0});
+    secs.forEach(function(s){ obs.observe(s); });
+  }
+  window.addEventListener('scroll', function(){
+    var best = null, bestTop = Infinity;
+    secs.forEach(function(s){ var t = s.getBoundingClientRect().top; if (t <= 140 && Math.abs(t-140) < bestTop){ bestTop = Math.abs(t-140); best = s; } });
+    if (best) setActive(best.id);
+  }, {passive:true});
+</script>
+</body>
+</html>
