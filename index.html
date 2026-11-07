@@ -145,12 +145,11 @@
   .client-card:hover{border-color:#333a4a;transform:translateY(-2px);box-shadow:0 18px 40px rgba(0,0,0,.35)}
   .cc-top{display:flex;align-items:center;gap:12px}
   .avatar{
-    width:46px;height:46px;flex:none;border-radius:14px;display:grid;place-items:center;
-    font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:12px;letter-spacing:.01em;color:#fff;
-    overflow:hidden;white-space:nowrap;
-    background:linear-gradient(150deg,var(--accent-soft),rgba(255,255,255,.02));
-    border:1px solid var(--accent);box-shadow:0 0 22px var(--accent-soft);
+    width:48px;height:48px;flex:none;border-radius:14px;display:grid;place-items:center;
+    overflow:hidden;background:#f3f4f6;border:1px solid rgba(255,255,255,.16);
+    box-shadow:0 0 18px var(--accent-soft);
   }
+  .avatar img{width:100%;height:100%;object-fit:cover;display:block}
   .cc-id{min-width:0;flex:1}
   .cc-name{font-family:"Space Grotesk",sans-serif;font-size:16px;font-weight:600;letter-spacing:-.01em;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
   .cc-name .mono{font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.08em;color:var(--text3);border:1px solid var(--line);border-radius:6px;padding:2px 6px;text-transform:uppercase}
@@ -333,6 +332,7 @@
       name: "Veni Vidi Lex",
       short: "VVL",
       initials: "VVL",
+      logo: "./assets/clientes/vvl.jpg",
       sector: "Despacho jurídico",
       project: "Sitio web corporativo y sistema de citas",
       domain: "vvljuridico.com",
@@ -340,6 +340,15 @@
       accent: "#c6a15b",
       soft: "rgba(198,161,91,.14)",
       reports: [
+        {
+          num: "02",
+          period: "Octubre 2026",
+          date: "6 nov 2026",
+          iso: "2026-11-06",
+          type: "Reporte mensual",
+          status: "Entregado",
+          url: "./Reportes%20GLA/GLA%20-%2002%20Reporte%20de%20Veni%20Vidi%20Lex/"
+        },
         {
           num: "01",
           period: "Septiembre 2026",
@@ -364,6 +373,7 @@
       name: "Anhelo Viajes",
       short: "Anhelo",
       initials: "AV",
+      logo: "./assets/clientes/anhelo.png",
       sector: "Agencia de viajes",
       project: "Sitio web, cotizador y panel de administración",
       domain: "",
@@ -385,6 +395,7 @@
       name: "Flamingos Tour",
       short: "Flamingos",
       initials: "FT",
+      logo: "./assets/clientes/flamingos.png",
       sector: "Transporte turístico",
       project: "Sitio web, cotizador y panel de administración",
       domain: "",
@@ -458,7 +469,7 @@
 
     return '<article class="client-card" style="--accent:' + c.accent + ';--accent-soft:' + c.soft + '">' +
       '<div class="cc-top">' +
-        '<div class="avatar">' + esc(c.initials || c.short) + '</div>' +
+        '<div class="avatar"><img src="' + esc(c.logo) + '" alt="Logo de ' + esc(c.name) + '" loading="lazy" /></div>' +
         '<div class="cc-id">' +
           '<div class="cc-name">' + esc(c.name) + '<span class="mono">' + esc(c.short) + '</span></div>' +
           '<div class="cc-sector">' + esc(c.sector) + '</div>' +
