@@ -1,0 +1,298 @@
+{
+  "client": "Anhelo Viajes",
+  "clientSub": "Renta de camionetas y transporte para grupos · Celaya, Guanajuato",
+  "initials": "AV",
+  "num": "02",
+  "period": "Octubre 2026",
+  "logo": "../../assets/clientes/anhelo.png",
+  "palette": {
+    "navy": "#022664",
+    "navy2": "#032763",
+    "navy3": "#011a45",
+    "gold": "#FCCC13",
+    "goldDark": "#a67c00",
+    "goldSoft": "rgba(252,204,19,.18)",
+    "blue": "#0393A9",
+    "soft": "#EAF1F9",
+    "bg": "#f4f7fb"
+  },
+  "h1": "Más rápido, seguro y <em>medible</em>",
+  "intro": "Resumen de la migración a Cloudflare, la instalación de Meta Pixel y el estado del sitio web, el cotizador y el panel de administración durante octubre de 2026.",
+  "resumen": {
+    "lead": "Octubre fue el mes de la <strong>migración a Cloudflare</strong>: el sistema pasó a una infraestructura más rápida, con base de datos y archivos en la nube. Se publicaron <strong>6 versiones</strong>, se instaló <strong>Meta Pixel</strong> con eventos de conversión y se registraron <strong>3 solicitudes reales</strong> de cotización. No se registraron interrupciones.",
+    "kpis": [
+      { "value": "6", "label": "Publicaciones en Cloudflare", "icon": "layers" },
+      { "value": "3", "label": "Solicitudes de cotización registradas", "icon": "users" },
+      { "value": "100%", "label": "Rutas principales verificadas", "icon": "check" },
+      { "value": "0", "label": "Incidencias registradas", "icon": "shield" }
+    ],
+    "highlight": {
+      "title": "En una frase",
+      "html": "El sistema opera ahora en <span class=\"accent\">Cloudflare</span>, con base de datos y archivos en la nube, y ya mide el recorrido del cliente con Meta Pixel: visita, cotización, apartado y pago."
+    },
+    "status": [
+      { "name": "Sitio web público", "desc": "Landing, camionetas, destinos, pagos y preguntas frecuentes", "state": "ok", "label": "Óptimo" },
+      { "name": "Cotizador en línea", "desc": "5 pasos, tarifario y recargo por lugar de salida", "state": "ok", "label": "Óptimo" },
+      { "name": "Panel administrativo", "desc": "Prospectos, apartados, camionetas, charters y pagos", "state": "ok", "label": "Óptimo" },
+      { "name": "Base de datos y archivos", "desc": "Cloudflare D1 y almacenamiento R2", "state": "ok", "label": "Óptimo" },
+      { "name": "Medición de conversiones", "desc": "Meta Pixel con eventos del recorrido del cliente", "state": "ok", "label": "Activo" }
+    ]
+  },
+  "ficha": {
+    "lead": "Datos generales del sistema que administramos para Anhelo Viajes.",
+    "rows": [
+      ["Cliente", "Anhelo Viajes — Renta de camionetas y transporte para grupos"],
+      ["Proyecto", "Sitio web, cotizador en línea y panel de administración"],
+      ["Dirección web", "<code>anhelo-viajes.ondamx.workers.dev</code> · versión segura <code>https</code>"],
+      ["Cobertura", "Celaya, Guanajuato, con salidas a Querétaro, León, Irapuato, Salamanca y Guanajuato"],
+      ["Infraestructura", "Cloudflare Workers + base de datos D1 + almacenamiento R2"],
+      ["Tecnología", "Next.js 16 con OpenNext, adaptado a celular, tablet y computadora"],
+      ["Base de datos", "Cloudflare D1 con 11 conjuntos de datos del negocio"],
+      ["Archivos", "Cloudflare R2 (bucket anhelo-media)"],
+      ["Última actualización", "25 de octubre de 2026"],
+      ["Estado general", "<span class=\"badge ok\"><span class=\"dot\"></span>Activo y estable</span>"]
+    ]
+  },
+  "estado": {
+    "lead": "Verificamos el acceso a los componentes principales del sistema. Todos respondieron correctamente.",
+    "rows": [
+      { "component": "Página principal", "result": "Responde correctamente", "time": "Menos de 0.7 s", "state": "ok", "label": "Disponible" },
+      { "component": "Cotizador", "result": "Responde correctamente", "time": "Menos de 0.3 s", "state": "ok", "label": "Disponible" },
+      { "component": "Apartado de viaje", "result": "Responde correctamente", "time": "Menos de 0.9 s", "state": "ok", "label": "Disponible" },
+      { "component": "Panel administrativo", "result": "Acceso protegido con usuario y contraseña", "time": "Menos de 0.2 s", "state": "ok", "label": "Disponible" },
+      { "component": "API de tarifario", "result": "Responde correctamente", "time": "Menos de 0.5 s", "state": "ok", "label": "Disponible" },
+      { "component": "API interna sin sesión", "result": "Acceso rechazado correctamente", "time": "Menos de 0.2 s", "state": "ok", "label": "Protegida" }
+    ],
+    "note": "Verificación realizada al cierre de este reporte. Todas las rutas públicas respondieron correctamente y las rutas internas exigen autenticación."
+  },
+  "actividad": {
+    "lead": "Esto es lo que se trabajó y quedó publicado durante octubre, ordenado por fechas.",
+    "items": [
+      {
+        "when": "13 de octubre",
+        "title": "Medición de conversiones",
+        "html": "Se instaló <strong>Meta Pixel</strong> en todo el sitio y se configuraron los eventos del recorrido del cliente: visita de contenido, solicitud de cotización, inicio de apartado y pago completado."
+      },
+      {
+        "when": "20 de octubre",
+        "title": "Migración a Cloudflare",
+        "html": "El sistema se trasladó a <strong>Cloudflare Workers</strong>, con base de datos <strong>D1</strong> y archivos en <strong>R2</strong>. Se ajustaron las direcciones de pago y se publicaron las primeras versiones en la nueva infraestructura."
+      },
+      {
+        "when": "20 y 21 de octubre",
+        "title": "Ajustes de la migración",
+        "html": "Se afinaron configuraciones, accesos y variables del sistema; se validó el funcionamiento del cotizador, el panel y la conexión con Mercado Pago en el nuevo entorno."
+      },
+      {
+        "when": "25 de octubre",
+        "title": "Versión final del mes",
+        "html": "Se publicó la actualización de cierre con el sistema estable en Cloudflare y todas las rutas principales funcionando."
+      },
+      {
+        "when": "27 de octubre",
+        "title": "Solicitudes reales en el nuevo sistema",
+        "html": "Se registró la tercera solicitud de cotización del periodo; la base de datos confirmó el guardado correcto de prospectos en Cloudflare."
+      }
+    ]
+  },
+  "web": {
+    "lead": "La página de Anhelo Viajes se encuentra completa, activa y adaptada a todo tipo de dispositivo.",
+    "cards": [
+      {
+        "title": "Secciones activas",
+        "icon": "layers",
+        "items": [
+          "Inicio y presentación de la marca",
+          "Catálogo de camionetas (11, 18 y 20 pasajeros)",
+          "Página individual por unidad con galería",
+          "Cotizador en línea",
+          "Charters a Ixtapa y Puerto Vallarta",
+          "Garantías, extras y destinos",
+          "Formas de pago y reserva",
+          "Testimonios y preguntas frecuentes",
+          "Contacto y WhatsApp"
+        ]
+      },
+      {
+        "title": "Experiencia del visitante",
+        "icon": "phone",
+        "items": [
+          "Diseño adaptado a celular, tablet y computadora",
+          "Botón de WhatsApp siempre visible",
+          "Cotizador de 5 pasos con resumen de precio",
+          "Fechas desde el día actual y validación de datos",
+          "Apartado en línea con transferencia o Mercado Pago",
+          "Carga más rápida desde la nueva infraestructura"
+        ]
+      },
+      {
+        "title": "Resultado",
+        "icon": "check",
+        "html": "El sitio se mantiene <strong>en línea y sin fallas</strong>. La migración a Cloudflare dejó una base más rápida y preparada para crecer."
+      }
+    ],
+    "note": "El catálogo público muestra 3 camionetas y 2 charters activos; el tarifario interno contiene 236 destinos para cotizar."
+  },
+  "panel": {
+    "lead": "Es la herramienta privada del equipo, protegida con usuario y contraseña.",
+    "cards": [
+      {
+        "title": "Dashboard",
+        "icon": "chart",
+        "items": [
+          "Resumen de prospectos",
+          "Nuevos, reservados y no cerrados",
+          "Tasa de cierre del periodo",
+          "Acceso rápido a cada módulo"
+        ]
+      },
+      {
+        "title": "Prospectos",
+        "icon": "users",
+        "items": [
+          "3 solicitudes registradas en el periodo",
+          "Datos de contacto, origen, destino y pasajeros",
+          "Unidad recomendada",
+          "Cambio de estado y seguimiento"
+        ]
+      },
+      {
+        "title": "Apartados y pagos",
+        "icon": "wallet",
+        "items": [
+          "Registro de apartados con ID de viaje",
+          "Comprobantes de transferencia",
+          "Pagos con Mercado Pago",
+          "Consulta del estado de cada viaje"
+        ]
+      },
+      {
+        "title": "Catálogo y configuración",
+        "icon": "settings",
+        "items": [
+          "Alta y edición de camionetas con fotos",
+          "Charters y fechas de salida",
+          "Datos de transferencia",
+          "Número de WhatsApp y redes sociales"
+        ]
+      }
+    ],
+    "note": "El panel opera sobre la base de datos en Cloudflare, por lo que la información queda disponible desde cualquier dispositivo con acceso."
+  },
+  "integraciones": {
+    "lead": "El sistema conecta los canales que el negocio necesita para recibir solicitudes, cobrar y medir resultados.",
+    "table": {
+      "head": ["Integración", "Función", "Estado"],
+      "rows": [
+        ["WhatsApp", "Atención directa y confirmación de viajes", "<span class=\"badge ok\"><span class=\"dot\"></span>Activo</span>"],
+        ["Mercado Pago", "Cobro en línea y vinculación de la cuenta del negocio", "<span class=\"badge warn\"><span class=\"dot\"></span>Por vincular</span>"],
+        ["Meta Pixel", "Medición de visitas, cotizaciones, apartados y pagos", "<span class=\"badge ok\"><span class=\"dot\"></span>Activo</span>"],
+        ["Transferencia bancaria", "Apartado con comprobante", "<span class=\"badge ok\"><span class=\"dot\"></span>Activo</span>"],
+        ["Cloudflare D1 y R2", "Base de datos y archivos del sistema", "<span class=\"badge ok\"><span class=\"dot\"></span>Activo</span>"]
+      ]
+    },
+    "cards": [
+      { "title": "WhatsApp", "icon": "phone", "html": "El número del negocio queda visible en todo el sitio y recibe las solicitudes con el resumen del viaje." },
+      { "title": "Mercado Pago", "icon": "wallet", "html": "La integración está lista para vincular la cuenta del negocio; al cierre del reporte la vinculación seguía pendiente." },
+      { "title": "Meta Pixel", "icon": "pixel", "html": "Mide el recorrido del cliente y permite conocer cuántas visitas se convierten en cotizaciones, apartados y pagos." },
+      { "title": "Cloudflare", "icon": "database", "html": "La base de datos D1 y los archivos en R2 viven en la misma plataforma, con respaldo y disponibilidad de la nube." }
+    ],
+    "note": "Recomendación: completar la vinculación de Mercado Pago para que los cobros en línea lleguen directamente a la cuenta de Anhelo Viajes."
+  },
+  "seguridad": {
+    "lead": "El sistema opera con conexión segura y el panel está protegido. Revisamos los accesos y la información interna.",
+    "cards": [
+      { "title": "Certificado de seguridad", "icon": "lock", "html": "<strong>HTTPS activo.</strong> La conexión del sitio es segura y el certificado se renueva automáticamente." },
+      { "title": "Acceso al panel", "icon": "users", "html": "El panel solicita <strong>usuario y contraseña</strong>. Existen dos niveles: administrador y cliente." },
+      { "title": "Información interna", "icon": "file", "html": "Los archivos de configuración y la información interna <strong>no son accesibles públicamente</strong>." }
+    ],
+    "highlight": {
+      "title": "Operación en Cloudflare",
+      "html": "El sistema corre sobre Cloudflare, con certificado HTTPS, base de datos D1 y archivos en R2. La información del negocio se mantiene separada de la web pública y las rutas internas exigen autenticación."
+    },
+    "checklist": [
+      "Conexión segura HTTPS activa",
+      "Panel con usuario y contraseña",
+      "Roles de administrador y cliente",
+      "Archivos internos no accesibles",
+      "Rutas API internas protegidas",
+      "Base de datos en Cloudflare D1",
+      "Archivos en Cloudflare R2",
+      "Monitoreo de la aplicación activo"
+    ]
+  },
+  "datos": {
+    "lead": "Lo que ya vive dentro del sistema al cierre de octubre.",
+    "bars": [
+      { "label": "Solicitudes de cotización", "value": "3", "width": 30 },
+      { "label": "Camionetas en catálogo", "value": "3", "width": 30 },
+      { "label": "Charters activos", "value": "2", "width": 20 },
+      { "label": "Destinos en tarifario", "value": "236", "width": 100 },
+      { "label": "Conjuntos de datos en D1", "value": "11", "width": 55 }
+    ],
+    "card": {
+      "title": "Actividad registrada",
+      "items": [
+        "3 solicitudes de cotización recibidas desde la web.",
+        "3 camionetas con galería y página propia.",
+        "2 charters activos con salidas programadas.",
+        "11 conjuntos de datos del negocio en Cloudflare D1.",
+        "1 bucket de archivos en Cloudflare R2."
+      ],
+      "badge": { "state": "info", "label": "3 prospectos · 11 conjuntos de datos" }
+    }
+  },
+  "hallazgos": {
+    "lead": "La operación y la migración quedaron en verde. Hay dos recomendaciones de seguridad y pagos para el siguiente periodo.",
+    "rows": [
+      { "name": "Sitio, cotizador y panel", "desc": "Sin hallazgos. Rutas activas y operación estable.", "state": "ok", "label": "Verde" },
+      { "name": "Migración a Cloudflare", "desc": "Completada sin interrupciones; base D1 y archivos R2 activos.", "state": "ok", "label": "Verde" },
+      { "name": "Medición de conversiones", "desc": "Meta Pixel activo con eventos del recorrido del cliente.", "state": "ok", "label": "Verde" },
+      { "name": "Cabeceras de seguridad", "desc": "Falta configurar HSTS, CSP y X-Frame-Options en las respuestas.", "state": "warn", "label": "Recomendación" },
+      { "name": "Vinculación de Mercado Pago", "desc": "La integración está lista; la cuenta del negocio aún no se vincula.", "state": "warn", "label": "Pendiente" },
+      { "name": "Respaldos automáticos", "desc": "La base D1 no tiene un respaldo programado visible.", "state": "info", "label": "Oportunidad" }
+    ],
+    "strengths": [
+      "Migración a Cloudflare sin interrupciones",
+      "3 solicitudes reales registradas",
+      "Meta Pixel midiendo el recorrido del cliente",
+      "Base de datos y archivos en la nube",
+      "Rutas principales 100% disponibles"
+    ],
+    "opportunities": [
+      "Configurar cabeceras de seguridad (HSTS, CSP, X-Frame-Options)",
+      "Vincular la cuenta de Mercado Pago",
+      "Programar respaldos semanales de la base D1",
+      "Usar un dominio propio para el negocio",
+      "Reportar conversiones y solicitudes cada mes"
+    ]
+  },
+  "proximos": {
+    "lead": "Plan sugerido para el siguiente periodo, enfocado en seguridad, cobros y medición.",
+    "steps": [
+      { "title": "Reforzar las cabeceras de seguridad", "html": "Activar HSTS, CSP, X-Frame-Options y demás protecciones en Cloudflare para endurecer las respuestas del sitio." },
+      { "title": "Vincular Mercado Pago", "html": "Conectar la cuenta del negocio para que los cobros en línea lleguen directamente a Anhelo Viajes." },
+      { "title": "Programar respaldos de la base", "html": "Dejar un respaldo automático semanal de la base D1 y verificar la recuperación." },
+      { "title": "Usar un dominio propio", "html": "Configurar un dominio del negocio para reforzar la marca y la confianza del cliente." },
+      { "title": "Reportar conversiones cada mes", "html": "Usar los datos de Meta Pixel para medir visitas, cotizaciones, apartados y pagos, y ajustar la campaña." }
+    ]
+  },
+  "cierre": {
+    "lead": "El sistema de Anhelo Viajes cerró octubre <strong>más rápido, seguro y medible</strong>, ya operando en Cloudflare. Agradecemos la confianza del equipo y quedamos a su disposición para cualquier duda o ajuste.",
+    "highlight": {
+      "title": "Estamos para servirle",
+      "html": "Para dudas, nuevas solicitudes o soporte, contacte a GLA — GrowLink Agency. Con gusto le apoyamos."
+    }
+  },
+  "footer": {
+    "summary": [
+      "Octubre 2026 · Reporte No. 02",
+      "6 publicaciones · 3 solicitudes · 0 incidencias",
+      "Cloudflare · D1 · R2 · Meta Pixel"
+    ]
+  },
+  "contact": {
+    "phone": "+52 411 115 8128",
+    "site": "anhelo-viajes.ondamx.workers.dev"
+  }
+}

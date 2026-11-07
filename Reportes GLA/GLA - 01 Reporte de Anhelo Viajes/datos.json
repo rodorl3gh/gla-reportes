@@ -1,0 +1,287 @@
+{
+  "client": "Anhelo Viajes",
+  "clientSub": "Renta de camionetas y transporte para grupos · Celaya, Guanajuato",
+  "initials": "AV",
+  "num": "01",
+  "period": "Septiembre 2026",
+  "logo": "../../assets/clientes/anhelo.png",
+  "palette": {
+    "navy": "#022664",
+    "navy2": "#032763",
+    "navy3": "#011a45",
+    "gold": "#FCCC13",
+    "goldDark": "#a67c00",
+    "goldSoft": "rgba(252,204,19,.18)",
+    "blue": "#0393A9",
+    "soft": "#EAF1F9",
+    "bg": "#f4f7fb"
+  },
+  "h1": "Un sistema digital <em>listo para vender</em>",
+  "intro": "Resumen del funcionamiento, las mejoras y el estado del sitio web, el cotizador y el panel de administración durante septiembre de 2026.",
+  "resumen": {
+    "lead": "El sistema de Anhelo Viajes cerró septiembre <strong>operando de forma estable</strong>. Durante el mes se publicaron <strong>19 mejoras y actualizaciones</strong> que dejaron listo el sitio público, el cotizador en línea, el apartado de viajes y el panel administrativo. El catálogo quedó con <strong>3 camionetas</strong> y <strong>2 charters</strong> activos, y no se registraron incidencias.",
+    "kpis": [
+      { "value": "19", "label": "Mejoras y actualizaciones publicadas", "icon": "chart" },
+      { "value": "3", "label": "Camionetas en el catálogo", "icon": "bus" },
+      { "value": "2", "label": "Charters activos", "icon": "route" },
+      { "value": "0", "label": "Incidencias registradas", "icon": "check" }
+    ],
+    "highlight": {
+      "title": "En una frase",
+      "html": "La página web, el cotizador y el panel de administración funcionan de forma continua: el cliente puede <span class=\"accent\">cotizar, apartar y pagar en línea</span>, y el equipo de Anhelo puede dar seguimiento a cada solicitud desde un solo lugar."
+    },
+    "status": [
+      { "name": "Sitio web público", "desc": "Landing, camionetas, destinos, pagos y preguntas frecuentes", "state": "ok", "label": "Óptimo" },
+      { "name": "Cotizador en línea", "desc": "5 pasos, tarifario y recargo por lugar de salida", "state": "ok", "label": "Óptimo" },
+      { "name": "Apartado y pagos", "desc": "Transferencia bancaria y Mercado Pago", "state": "ok", "label": "Óptimo" },
+      { "name": "Panel administrativo", "desc": "Prospectos, apartados, camionetas, charters y pagos", "state": "ok", "label": "Óptimo" },
+      { "name": "Catálogo de unidades", "desc": "3 camionetas y 2 charters activos", "state": "ok", "label": "Óptimo" }
+    ]
+  },
+  "ficha": {
+    "lead": "Datos generales del sistema que administramos para Anhelo Viajes.",
+    "rows": [
+      ["Cliente", "Anhelo Viajes — Renta de camionetas y transporte para grupos"],
+      ["Proyecto", "Sitio web, cotizador en línea y panel de administración"],
+      ["Dirección web actual", "<code>anhelo-viajes.ondamx.workers.dev</code> · versión segura <code>https</code>"],
+      ["Cobertura", "Celaya, Guanajuato, con salidas a Querétaro, León, Irapuato, Salamanca y Guanajuato"],
+      ["Catálogo", "3 camionetas (11, 18 y 20 pasajeros) y 2 charters activos"],
+      ["Tarifario", "10 tipos de unidad, 236 destinos y 60 lugares de salida"],
+      ["Infraestructura", "Servidor administrado (migrado a Cloudflare en octubre de 2026)"],
+      ["Tecnología", "Sitio moderno, adaptado a celular, tablet y computadora"],
+      ["Última actualización", "30 de septiembre de 2026"],
+      ["Estado general", "<span class=\"badge ok\"><span class=\"dot\"></span>Activo y estable</span>"]
+    ]
+  },
+  "estado": {
+    "lead": "Verificamos el acceso a los componentes principales del sistema. Todos respondieron correctamente.",
+    "rows": [
+      { "component": "Página principal", "result": "Responde correctamente", "time": "Menos de 0.7 s", "state": "ok", "label": "Disponible" },
+      { "component": "Cotizador", "result": "Responde correctamente", "time": "Menos de 0.3 s", "state": "ok", "label": "Disponible" },
+      { "component": "Apartado de viaje", "result": "Responde correctamente", "time": "Menos de 0.9 s", "state": "ok", "label": "Disponible" },
+      { "component": "Panel administrativo", "result": "Acceso protegido con usuario y contraseña", "time": "Menos de 0.2 s", "state": "ok", "label": "Disponible" }
+    ],
+    "note": "Durante septiembre se publicaron 19 cambios y no se registraron errores ni interrupciones. Las mediciones de tiempo corresponden a la verificación realizada al cierre de este reporte."
+  },
+  "actividad": {
+    "lead": "Esto es lo que se trabajó y quedó publicado durante septiembre, ordenado por semanas.",
+    "items": [
+      {
+        "when": "Semana 1 · 1 de septiembre",
+        "title": "Imagen y acceso al panel",
+        "html": "Se colocó el logo de la marca en el menú lateral y en la pantalla de acceso, se agregó el botón para abrir la web desde el panel y se corrigió el margen de la página principal para eliminar el marco blanco."
+      },
+      {
+        "when": "Semana 2 · 7 de septiembre",
+        "title": "Galerías y cotizador",
+        "html": "Se agregaron galerías con carrusel para cada camioneta, páginas individuales por unidad y mejoras al cotizador para que el cliente vea mejor cada opción."
+      },
+      {
+        "when": "Semana 3 · 18 al 21 de septiembre",
+        "title": "Pagos y tarifas",
+        "html": "Se habilitó la vinculación de la cuenta de Mercado Pago del negocio para recibir los pagos directamente, se agregó el recargo por lugar de salida y se sumaron nuevas unidades al catálogo (Mitsubishi, Suzuki y MG)."
+      },
+      {
+        "when": "Semana 4 · 25 al 30 de septiembre",
+        "title": "Apartado y catálogo",
+        "html": "Se renovó el apartado en dos columnas con ID de viaje, se habilitó la pasarela de Mercado Pago en modo pruebas y producción, se añadieron los comprobantes de transferencia y se dejó lista el alta de unidades desde el panel. También se actualizó el logo de la marca."
+      }
+    ]
+  },
+  "web": {
+    "lead": "La página de Anhelo Viajes se encuentra completa, activa y adaptada a todo tipo de dispositivo.",
+    "cards": [
+      {
+        "title": "Secciones activas",
+        "icon": "layers",
+        "items": [
+          "Inicio y presentación de la marca",
+          "Catálogo de camionetas (11, 18 y 20 pasajeros)",
+          "Página individual por unidad con galería",
+          "Cotizador en línea",
+          "Charters a Ixtapa y Puerto Vallarta",
+          "Garantías, extras y destinos",
+          "Formas de pago y reserva",
+          "Testimonios y preguntas frecuentes",
+          "Contacto y WhatsApp"
+        ]
+      },
+      {
+        "title": "Experiencia del visitante",
+        "icon": "phone",
+        "items": [
+          "Diseño adaptado a celular, tablet y computadora",
+          "Botón de WhatsApp siempre visible",
+          "Cotizador de 5 pasos con resumen de precio",
+          "Fechas desde el día actual y validación de datos",
+          "Apartado en línea con transferencia o Mercado Pago"
+        ]
+      },
+      {
+        "title": "Resultado",
+        "icon": "check",
+        "html": "El sitio se mantiene <strong>en línea y sin fallas</strong>. Es la cara profesional del negocio y el canal directo para recibir solicitudes de cotización."
+      }
+    ],
+    "note": "El catálogo público muestra 3 camionetas y 2 charters activos; el tarifario interno contiene 236 destinos para cotizar."
+  },
+  "panel": {
+    "lead": "Es la herramienta privada del equipo, protegida con usuario y contraseña.",
+    "cards": [
+      {
+        "title": "Dashboard",
+        "icon": "chart",
+        "items": [
+          "Resumen de prospectos",
+          "Nuevos, reservados y no cerrados",
+          "Tasa de cierre del periodo",
+          "Acceso rápido a cada módulo"
+        ]
+      },
+      {
+        "title": "Prospectos",
+        "icon": "users",
+        "items": [
+          "Solicitudes recibidas desde la web",
+          "Datos de contacto, origen, destino y pasajeros",
+          "Unidad recomendada",
+          "Cambio de estado y seguimiento"
+        ]
+      },
+      {
+        "title": "Apartados y pagos",
+        "icon": "wallet",
+        "items": [
+          "Registro de apartados con ID de viaje",
+          "Comprobantes de transferencia",
+          "Pagos con Mercado Pago",
+          "Consulta del estado de cada viaje"
+        ]
+      },
+      {
+        "title": "Catálogo y configuración",
+        "icon": "settings",
+        "items": [
+          "Alta y edición de camionetas con fotos",
+          "Charters y fechas de salida",
+          "Datos de transferencia",
+          "Número de WhatsApp y redes sociales"
+        ]
+      }
+    ],
+    "note": "El panel permite operar el negocio sin depender de herramientas externas: prospectos, apartados, unidades, charters y pagos viven en un solo sistema."
+  },
+  "integraciones": {
+    "lead": "El sistema conecta los canales que el negocio necesita para recibir solicitudes y cobrar.",
+    "table": {
+      "head": ["Integración", "Función", "Estado"],
+      "rows": [
+        ["WhatsApp", "Atención directa y confirmación de viajes", "<span class=\"badge ok\"><span class=\"dot\"></span>Activo</span>"],
+        ["Mercado Pago", "Cobro en línea y vinculación de la cuenta del negocio", "<span class=\"badge ok\"><span class=\"dot\"></span>Integrado</span>"],
+        ["Transferencia bancaria", "Apartado con comprobante", "<span class=\"badge ok\"><span class=\"dot\"></span>Activo</span>"],
+        ["Panel administrativo", "Gestión de prospectos, apartados y catálogo", "<span class=\"badge ok\"><span class=\"dot\"></span>Activo</span>"]
+      ]
+    },
+    "cards": [
+      { "title": "WhatsApp", "icon": "phone", "html": "El número del negocio queda visible en todo el sitio y recibe las solicitudes con el resumen del viaje." },
+      { "title": "Mercado Pago", "icon": "wallet", "html": "La cuenta del negocio se vincula mediante un proceso seguro; los cobros llegan directamente a Anhelo Viajes." },
+      { "title": "Transferencia", "icon": "file", "html": "El cliente puede apartar con transferencia y subir su comprobante; el equipo lo revisa desde el panel." }
+    ],
+    "note": "En septiembre quedó lista la integración de pagos. La medición de conversiones con Meta Pixel se incorporó en octubre y se detalla en el Reporte 02."
+  },
+  "seguridad": {
+    "lead": "El sitio opera con conexión segura y el panel está protegido. Revisamos los accesos y la información interna.",
+    "cards": [
+      { "title": "Certificado de seguridad", "icon": "lock", "html": "<strong>HTTPS activo.</strong> La conexión del sitio es segura y el certificado se renueva automáticamente." },
+      { "title": "Acceso al panel", "icon": "users", "html": "El panel solicita <strong>usuario y contraseña</strong>. Existen dos niveles: administrador y cliente." },
+      { "title": "Información interna", "icon": "file", "html": "Los archivos de configuración y la información interna <strong>no son accesibles públicamente</strong>." }
+    ],
+    "highlight": {
+      "title": "Protección verificada",
+      "html": "Comprobamos que las rutas internas responden de forma restringida y que el panel no permite el acceso sin credenciales. La información del negocio se mantiene separada de la web pública."
+    },
+    "checklist": [
+      "Conexión segura HTTPS activa",
+      "Panel con usuario y contraseña",
+      "Roles de administrador y cliente",
+      "Archivos internos no accesibles",
+      "APIs protegidas",
+      "Comprobantes resguardados",
+      "Catálogo administrado desde el panel",
+      "Acceso al panel desde cualquier dispositivo"
+    ]
+  },
+  "datos": {
+    "lead": "Lo que ya vive dentro del sistema al cierre de septiembre.",
+    "bars": [
+      { "label": "Camionetas en catálogo", "value": "3", "width": 30 },
+      { "label": "Charters activos", "value": "2", "width": 20 },
+      { "label": "Tipos de unidad en tarifario", "value": "10", "width": 55 },
+      { "label": "Destinos en tarifario", "value": "236", "width": 100 },
+      { "label": "Lugares de salida", "value": "60", "width": 70 }
+    ],
+    "card": {
+      "title": "Operación habilitada",
+      "items": [
+        "3 camionetas con galería y página propia.",
+        "2 charters activos con salidas programadas.",
+        "Cotizador con 236 destinos y 60 lugares de salida.",
+        "Panel con prospectos, apartados, pagos y catálogo.",
+        "Acceso para administrador y cliente."
+      ],
+      "badge": { "state": "info", "label": "3 camionetas · 2 charters · 236 destinos" }
+    }
+  },
+  "hallazgos": {
+    "lead": "Todas las áreas revisadas quedaron en verde. La oportunidad principal es medir y aprovechar mejor la operación.",
+    "rows": [
+      { "name": "Sitio web y cotizador", "desc": "Sin hallazgos. Secciones completas y rutas activas.", "state": "ok", "label": "Verde" },
+      { "name": "Panel administrativo", "desc": "Sin hallazgos. Módulos de operación completos.", "state": "ok", "label": "Verde" },
+      { "name": "Pagos e integraciones", "desc": "Mercado Pago y transferencia listos para operar.", "state": "ok", "label": "Verde" },
+      { "name": "Seguridad y accesos", "desc": "Panel protegido y archivos internos restringidos.", "state": "ok", "label": "Verde" },
+      { "name": "Medición de conversiones", "desc": "Aún no se medía el recorrido del cliente.", "state": "info", "label": "Oportunidad" }
+    ],
+    "strengths": [
+      "19 mejoras publicadas sin incidencias",
+      "Cotizador y apartado en línea",
+      "3 camionetas y 2 charters activos",
+      "Pagos con transferencia y Mercado Pago",
+      "Panel administrativo completo"
+    ],
+    "opportunities": [
+      "Activar la medición de conversiones (Meta Pixel)",
+      "Vincular formalmente la cuenta de Mercado Pago",
+      "Programar respaldos automáticos de la base",
+      "Capacitar al equipo en el panel",
+      "Revisar el catálogo y las fotos cada temporada"
+    ]
+  },
+  "proximos": {
+    "lead": "Plan sugerido para octubre, enfocado en medir resultados y reforzar la operación.",
+    "steps": [
+      { "title": "Activar la medición de conversiones", "html": "Instalar Meta Pixel y registrar visitas, cotizaciones, apartados y pagos para conocer el recorrido del cliente." },
+      { "title": "Vincular Mercado Pago", "html": "Conectar la cuenta del negocio para que los cobros en línea lleguen directamente a Anhelo Viajes." },
+      { "title": "Programar respaldos", "html": "Dejar un respaldo automático de la base de datos y de los comprobantes." },
+      { "title": "Capacitar al equipo", "html": "Sesión breve para aprovechar prospectos, apartados, camionetas, charters y pagos." },
+      { "title": "Mantener el catálogo al día", "html": "Actualizar fotos, unidades y fechas de salida cada temporada." }
+    ]
+  },
+  "cierre": {
+    "lead": "El sistema de Anhelo Viajes cerró septiembre <strong>estable, completo y listo para operar</strong>. Agradecemos la confianza del equipo y quedamos a su disposición para cualquier duda o ajuste.",
+    "highlight": {
+      "title": "Estamos para servirle",
+      "html": "Para dudas, nuevas solicitudes o soporte, contacte a GLA — GrowLink Agency. Con gusto le apoyamos."
+    }
+  },
+  "footer": {
+    "summary": [
+      "Septiembre 2026 · Reporte No. 01",
+      "19 mejoras publicadas · 0 incidencias",
+      "3 camionetas · 2 charters · 236 destinos"
+    ]
+  },
+  "contact": {
+    "phone": "+52 411 115 8128",
+    "site": "anhelo-viajes.ondamx.workers.dev"
+  }
+}
