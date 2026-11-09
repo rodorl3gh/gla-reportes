@@ -108,6 +108,18 @@ strong{color:var(--ink)}
 .tip::before{content:"✓";color:var(--green);width:20px;height:20px;display:flex;align-items:center;justify-content:center}
 .warn::before{content:"!";color:var(--orange);width:20px;height:20px;display:flex;align-items:center;justify-content:center}
 
+/* Acceso rápido con QR */
+.qr-install{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:20px;align-items:center;
+  background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);margin:18px 0}
+.qr-install h3{font-size:18px;color:var(--ink);margin:0 0 6px}
+.qr-install p{color:var(--muted);font-size:14.5px;margin:0 0 14px}
+.qr-install img{width:100%;max-width:210px;border:1px solid var(--line);border-radius:12px;background:#fff;padding:8px;margin:0 auto}
+.qr-btn{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;text-decoration:none;
+  padding:12px 18px;border-radius:999px;font-weight:600;font-size:14.5px;overflow-wrap:anywhere}
+.qr-btn:hover{background:var(--ink-2);color:#fff}
+.qr-url{display:block;margin-top:10px;font-size:13px;color:var(--muted);overflow-wrap:anywhere}
+.qr-url a{color:var(--ink);font-weight:600}
+
 /* Figuras */
 figure{margin:20px 0 26px}
 figure img{border-radius:14px;border:1px solid var(--line);box-shadow:var(--shadow);background:#fff}
@@ -205,13 +217,22 @@ footer strong{color:#fff}
       <h2 class="sec"><span class="sec-num">2</span>Instalar en el iPad</h2>
       <p class="sub">La primera instalación necesita internet. Después, la aplicación abre y funciona sin conexión.</p>
       <ol class="steps">
-        <li><b>Abre Safari</b> y visita <b>larkseeds.growlinkmx.com</b>.</li>
+        <li><b>Abre Safari</b> y visita <a href="https://larkseeds.growlinkmx.com" target="_blank" rel="noopener">larkseeds.growlinkmx.com</a>.</li>
         <li>Espera a que cargue por completo la pantalla de inicio.</li>
         <li>Toca el botón <b>Compartir</b> (el cuadro con la flecha hacia arriba).</li>
         <li>Elige <b>Añadir a pantalla de inicio</b> y confirma con <b>Añadir</b>.</li>
         <li>Abre la aplicación desde el nuevo icono y espera unos segundos: así se guarda completa en el dispositivo.</li>
         <li>Activa <b>Modo avión</b> y vuelve a abrirla para comprobar que funciona sin internet. Desactiva el modo avión al terminar.</li>
       </ol>
+      <div class="qr-install">
+        <div>
+          <h3>Escanea el QR o abre el enlace</h3>
+          <p>Desde el iPad, apunta la cámara al código o toca el botón para abrir el formulario directamente en Safari.</p>
+          <a class="qr-btn" href="https://larkseeds.growlinkmx.com" target="_blank" rel="noopener">Abrir el formulario</a>
+          <span class="qr-url">Enlace directo: <a href="https://larkseeds.growlinkmx.com" target="_blank" rel="noopener">larkseeds.growlinkmx.com</a></span>
+        </div>
+        <img src="img/qr-formulario.png" alt="Código QR para abrir el formulario de Lark Seeds">
+      </div>
       <div class="tip">Abre siempre la aplicación desde el icono de la pantalla de inicio. Así se ejecuta a pantalla completa, sin las barras de Safari.</div>
       <div class="warn">No borres los datos de Safari ni desinstales la aplicación durante la expo: las entrevistas se guardan en el almacenamiento del iPad.</div>
     </section>
