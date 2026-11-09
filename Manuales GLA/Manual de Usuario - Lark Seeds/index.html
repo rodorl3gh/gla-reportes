@@ -120,6 +120,13 @@ strong{color:var(--ink)}
 .qr-url{display:block;margin-top:10px;font-size:13px;color:var(--muted);overflow-wrap:anywhere}
 .qr-url a{color:var(--ink);font-weight:600}
 
+/* Credenciales */
+.creds{display:grid;gap:8px;background:var(--gold-soft);border:1px solid rgba(244,197,61,.6);
+  border-radius:14px;padding:16px 18px;margin:16px 0;font-size:14.5px}
+.creds span{overflow-wrap:anywhere}
+.creds strong{color:var(--ink)}
+.creds code{background:#fff;border:1px solid var(--line);border-radius:8px;padding:2px 8px;font-size:14px;color:var(--ink)}
+
 /* Figuras */
 figure{margin:20px 0 26px}
 figure img{border-radius:14px;border:1px solid var(--line);box-shadow:var(--shadow);background:#fff}
@@ -197,6 +204,8 @@ footer strong{color:#fff}
       <li><a href="#instalar">Instalar en el iPad</a></li>
       <li><a href="#inicio">Pantalla de inicio</a></li>
       <li><a href="#capturar">Capturar una entrevista</a></li>
+      <li><a href="#subir">Subir la información</a></li>
+      <li><a href="#admin">Descargar registros (administrador)</a></li>
       <li><a href="#buenas">Buenas prácticas y problemas</a></li>
     </ol>
   </nav>
@@ -266,6 +275,13 @@ footer strong{color:#fff}
         <img src="img/02-tema-oscuro.png" alt="Pantalla de inicio en tema oscuro">
         <figcaption>Tema oscuro. Útil con poca luz; la preferencia se conserva en el dispositivo.</figcaption>
       </figure>
+      <h3>Acceso del cliente</h3>
+      <p>Para consultar los registros y subir la información, entra con estas credenciales:</p>
+      <div class="creds">
+        <span><strong>Usuario:</strong> <code>larkseeds26</code></span>
+        <span><strong>Contraseña:</strong> <code>LarkSeeds2026*</code></span>
+      </div>
+      <div class="note">Estas credenciales son para el personal de Lark Seeds. No las compartas fuera del equipo de la expo.</div>
     </section>
 
     <section id="capturar">
@@ -301,14 +317,41 @@ footer strong{color:#fff}
       <div class="tip">Si no hay internet, la entrevista queda guardada como <strong>Pendiente</strong> y el equipo la envía cuando haya conexión. No necesitas hacer nada más.</div>
     </section>
 
+    <section id="subir">
+      <h2 class="sec"><span class="sec-num">5</span>Subir la información</h2>
+      <p class="sub">Al terminar la expo, envía todas las entrevistas del iPad al servidor de Cloudflare con un solo botón.</p>
+      <ol class="steps">
+        <li><b>Conecta el iPad a internet</b> (Wi-Fi o datos móviles).</li>
+        <li>Abre la app y, en la pantalla de inicio, toca <b>Registros</b>.</li>
+        <li>Si pide acceso, entra con el usuario <b>larkseeds26</b> y su contraseña.</li>
+        <li>Toca el botón <b>Subir información</b>.</li>
+        <li>Espera el aviso <b>Registros subidos: N</b>. No cierres la app mientras sube.</li>
+      </ol>
+      <div class="tip">Cuando un registro se sube, su estado cambia de <b>Pendiente</b> a <b>Sincronizado</b>. Puedes repetir la subida las veces que quieras: no se duplican registros.</div>
+      <div class="warn">Sin internet no es posible subir. Las entrevistas siguen guardadas en el iPad; conecta el dispositivo y repite el proceso.</div>
+    </section>
+
+    <section id="admin">
+      <h2 class="sec"><span class="sec-num">6</span>Descargar registros (administrador)</h2>
+      <p class="sub">Desde el perfil de administrador puedes revisar y descargar todo lo que se ha subido a la nube, incluso desde otro dispositivo.</p>
+      <ol class="steps">
+        <li>Entra a la app con las credenciales de <b>administrador</b>.</li>
+        <li>Abre el <b>Panel</b>.</li>
+        <li>Busca la sección <b>Registros en la nube</b>: muestra el total y los últimos registros subidos.</li>
+        <li>Toca <b>Descargar CSV</b> para obtener la base completa lista para Excel.</li>
+      </ol>
+      <div class="tip">El archivo CSV incluye folio, fecha, nombre, empresa, país, WhatsApp, correo y todas las respuestas del formulario. Si se agregan registros después, vuelve a descargarlo para tener la versión más reciente.</div>
+      <div class="note">El botón <b>Actualizar</b> recarga la lista desde el servidor. Solo el administrador puede ver y descargar los registros de la nube; el usuario de captura no tiene acceso a esta sección.</div>
+    </section>
+
     <section id="buenas">
-      <h2 class="sec"><span class="sec-num">5</span>Buenas prácticas y problemas</h2>
+      <h2 class="sec"><span class="sec-num">7</span>Buenas prácticas y problemas</h2>
       <p class="sub">Rutina recomendada para la expo y solución rápida de situaciones comunes.</p>
       <h3>Rutina diaria</h3>
       <ol class="steps">
         <li><b>Al iniciar:</b> carga el iPad, abre la app desde el icono, toca <b>Entrevistador</b> y verifica el folio.</li>
         <li><b>Durante la expo:</b> captura cada visita y confirma el folio al guardar.</li>
-        <li><b>Al terminar:</b> deja el iPad conectado a internet para que el equipo sincronice la información.</li>
+        <li><b>Al terminar:</b> conecta el iPad a internet y toca <b>Subir información</b> hasta ver el aviso de registros subidos.</li>
         <li><b>Si algo falla:</b> avisa al coordinador con el folio y una captura de pantalla.</li>
       </ol>
       <h3>Problemas comunes</h3>
@@ -323,6 +366,8 @@ footer strong{color:#fff}
             <tr><td>El folio no aparece</td><td>Regresa al inicio y toca de nuevo <b>Entrevistador</b>.</td></tr>
             <tr><td>La app se ve pequeña o con barras</td><td>Ábrela desde el icono de la pantalla de inicio, no desde Safari.</td></tr>
             <tr><td>Necesito cambiar de idioma</td><td>Usa el selector ES · EN · PT · EL de la esquina superior.</td></tr>
+            <tr><td>El botón Subir información no responde</td><td>Verifica la conexión a internet y espera el aviso de registros subidos; no cierres la app durante la subida.</td></tr>
+            <tr><td>No veo los registros en la nube</td><td>Vuelve a iniciar sesión como administrador y toca Actualizar en la sección Registros en la nube.</td></tr>
           </tbody>
         </table>
       </div>
@@ -333,7 +378,7 @@ footer strong{color:#fff}
 
 <footer>
   <div class="wrap">
-    <div><strong>Lark Seeds International</strong> · Manual de usuario v1.0.2</div>
+    <div><strong>Lark Seeds International</strong> · Manual de usuario v1.0.3</div>
     <div><span class="badge">GLA</span> GrowLink Agency · Soporte técnico</div>
   </div>
 </footer>
